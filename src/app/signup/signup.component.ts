@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {SignupService} from "../signup.service";
+import {AuthenticationService} from "../services/authentication.service";
+import {TokenService} from "../services/token.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-signup',
@@ -8,8 +10,12 @@ import {SignupService} from "../signup.service";
 })
 export class SignupComponent implements OnInit {
 
-  constructor(private signupService: SignupService) { }
+  constructor(private authenticationService: AuthenticationService,
+              private tokenService: TokenService,
+              private router: Router
+              ) { }
 
+  errors = [];
 
 
   public form = {
@@ -20,8 +26,20 @@ export class SignupComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.form);
-    this.signupService.signup(this.form);
+    this.authenticationService.signup(this.form).subscribe(
+      data => this.handleResponse(data),
+      error =>this.handleError(error)
+    );
+  }
+
+  handleResponse(data) {
+    this.tokenService.handleToken(data.access_token);
+    this.router.navigateByUrl('/dashboard');
+  }
+
+  handleError(error) {
+    this.errors = error.error.errors;
+    console.log(this.errors);
   }
 
   ngOnInit() {

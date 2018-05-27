@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { Folder } from '../folder';
-import { FolderService } from '../folder.service';
+import { FolderService } from '../services/folder.service';
 
 @Component({
   selector: 'app-subscription-manager',
