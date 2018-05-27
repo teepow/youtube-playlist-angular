@@ -1,3 +1,6 @@
-<p>
-  subscription-manager works!
-</p>
+<ul class="folders">
+  <li *ngFor="let folder of folders">
+      <span class="badge">{{folder.id}}</span> {{folder.name}}
+  </li>
+</ul>
+<p>folders</p>

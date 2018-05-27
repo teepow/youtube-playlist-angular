@@ -1,15 +1,26 @@
 import { Component, OnInit } from '@angular/core';
 
+import { Folder } from '../folder';
+import { FolderService } from '../folder.service';
+
 @Component({
   selector: 'app-subscription-manager',
   templateUrl: './subscription-manager.component.html',
   styleUrls: ['./subscription-manager.component.css']
 })
-export class SubscriptionManagerComponent implements OnInit {
 
-  constructor() { }
+export class SubscriptionManagerComponent implements OnInit {
+  folders : Folder[];
+
+  constructor(private folderService: FolderService) { }
 
   ngOnInit() {
+    this.getFolders();
+  }
+
+  getFolders(): void {
+    this.folderService.getFolders()
+      .subscribe(folders => this.folders = folders);
   }
 
 }
