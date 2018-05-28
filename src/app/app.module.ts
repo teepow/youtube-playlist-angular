@@ -12,6 +12,8 @@ import { RequestResetComponent } from './password/request-reset/request-reset.co
 import { ResponseResetComponent } from './password/response-reset/response-reset.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { SnotifyModule, SnotifyService, ToastDefaults } from 'ng-snotify';
+
 
 @NgModule({
   declarations: [
@@ -29,7 +31,12 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    SnotifyModule
   ],
+  providers: [
+    { provide: 'SnotifyToastConfig', useValue: ToastDefaults },
+    SnotifyService],
+
   bootstrap: [AppComponent]
 })
 export class AppModule { }

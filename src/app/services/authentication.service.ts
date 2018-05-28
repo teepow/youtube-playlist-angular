@@ -19,4 +19,14 @@ export class AuthenticationService {
   login(form) {
     return this.http.post(`${this.baseUrl}/login`, form);
   }
+
+  /** Send password reset email with Laravel **/
+  sendPasswordResetLink(form) {
+    return this.http.post(`${this.baseUrl}/sendPasswordResetLink`, form);
+  }
+
+  changePassword(form) {
+    return this.http.post(`${this.baseUrl}/resetPassword`, form);
+}
+
 }
