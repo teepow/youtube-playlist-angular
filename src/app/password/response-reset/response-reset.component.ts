@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {AuthenticationService} from "../../services/authentication.service";
+import {SnotifyService} from "ng-snotify";
 
 @Component({
   selector: 'app-response-reset',
@@ -19,7 +20,9 @@ export class ResponseResetComponent implements OnInit {
   }
 
   constructor(private route : ActivatedRoute,
-              private AuthService : AuthenticationService
+              private AuthService : AuthenticationService,
+              private Router : Router,
+              private Snotify : SnotifyService
               ) {
     route.queryParams.subscribe(params => {
       this.form.resetToken = params['token']
@@ -34,11 +37,21 @@ export class ResponseResetComponent implements OnInit {
   }
 
   handleResponse(data) {
-
+    this.Snotify.confirm('Done! Now login with new password', {
+      buttons: [
+        {
+          text: 'Okay',
+          action: toster => {
+            this.Router.navigateByUrl('/login');
+            this.Snotify.remove(toster.id);
+          }
+        },
+      ]
+    });
   }
 
   handleError(error) {
-
+    this.errors = error.error.errors;
   }
 
   ngOnInit() {
