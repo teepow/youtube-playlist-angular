@@ -17,7 +17,6 @@ export class FolderService {
   constructor(private http: HttpClient) { }
 
   /** GET folders from the server */
-  /** GET folders from the server */
   getFolders (): Observable<Folder[]> {
     return this.http.get<Folder[]>(this.foldersUrl)
     .pipe(

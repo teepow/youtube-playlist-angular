@@ -21,6 +21,7 @@ export class SubscriptionManagerComponent implements OnInit {
   getFolders(): void {
     this.folderService.getFolders()
       .subscribe(folders => this.folders = folders);
+      console.log(this.folders);
   }
 
 }

@@ -1,3 +1,10 @@
-<p>
-  dashboard works!
-</p>
+<ul>
+    <span class="badge">{{dashboard?.user_id}}</span>
+</ul>
+<ul class="folders">
+  <li *ngFor="let folder of dashboard?.folders">
+    <span class="badge">{{folder?.id}}</span> {{folder?.name}}
+  </li>
+</ul>
+<p>folders</p>
+<p>dashboard</p>

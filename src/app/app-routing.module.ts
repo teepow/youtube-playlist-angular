@@ -10,7 +10,7 @@ import {BeforeLoginService as BeforeLogin} from "./services/before-login.service
 import {AfterLoginService as AfterLogin} from "./services/after-login.service";
 
 const routes: Routes = [
-  { path: 'folders', component: SubscriptionManagerComponent },
+  { path: 'folders', component: SubscriptionManagerComponent, canActivate: [AfterLogin] },
   { path: 'login', component:  LoginComponent, canActivate: [BeforeLogin]},
   { path: 'signup', component:  SignupComponent, canActivate: [BeforeLogin]},
   { path: 'request-password-reset', component:  RequestResetComponent, canActivate: [BeforeLogin]},

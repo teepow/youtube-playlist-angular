@@ -18,7 +18,6 @@ export class RequestResetComponent implements OnInit {
 
   ngOnInit() {
   }
-
   onSubmit() {
     this.AuthenticationService.sendPasswordResetLink(this.form).subscribe(
       data => this.handleResponse(data),
