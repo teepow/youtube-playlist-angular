@@ -13,6 +13,9 @@ import { ResponseResetComponent } from './password/response-reset/response-reset
 import { NavbarComponent } from './navbar/navbar.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { SnotifyModule, SnotifyService, ToastDefaults } from 'ng-snotify';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { NoFolderSubsComponent } from './subscription-manager/no-folder-subs/no-folder-subs.component';
+import { FoldersComponent } from './subscription-manager/folders/folders.component';
 
 
 @NgModule({
@@ -24,14 +27,17 @@ import { SnotifyModule, SnotifyService, ToastDefaults } from 'ng-snotify';
     RequestResetComponent,
     ResponseResetComponent,
     NavbarComponent,
-    DashboardComponent
+    DashboardComponent,
+    NoFolderSubsComponent,
+    FoldersComponent
   ],
   imports: [
     HttpClientModule,
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    SnotifyModule
+    SnotifyModule,
+    NgbModule.forRoot()
   ],
   providers: [
     { provide: 'SnotifyToastConfig', useValue: ToastDefaults },

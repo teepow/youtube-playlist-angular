@@ -1,19 +1,16 @@
 import { Injectable } from '@angular/core';
-
-import { Observable, of } from 'rxjs';
-
-import { Folder } from '../folder';
-import { catchError, map, tap } from 'rxjs/operators';
-
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import {Observable, of} from "rxjs/index";
+import {catchError} from "rxjs/operators";
 import {TokenService} from "./token.service";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
+import {Subscription} from "../models/subscription";
 
 @Injectable({
   providedIn: 'root'
 })
-export class FolderService {
+export class SubscriptionService {
 
-  private foldersUrl = 'http://127.0.0.1:8000/folders';  // URL to web api
+  private noFolderSubscriptionsUrl = 'http://127.0.0.1:8000/subscriptions/no-folder';  // URL to web api
 
   token = this.tokenService.getToken();
 
@@ -21,8 +18,8 @@ export class FolderService {
               private tokenService: TokenService
   ) {}
 
-  /** GET folders from the server */
-  getFolders (): Observable<Folder[]> {
+  /** GET noFolderSubscriptions from the server */
+  getNoFolderSubscriptions (): Observable<Subscription[]> {
     //set token in headers
     const httpOptions = {
       headers: new HttpHeaders({
@@ -30,10 +27,10 @@ export class FolderService {
         'Authorization': 'Bearer ' + this.token
       })
     };
-    return this.http.get<Folder[]>(this.foldersUrl, httpOptions)
-    .pipe(
-      catchError(this.handleError('getFolders', []))
-    );
+    return this.http.get<Subscription[]>(this.noFolderSubscriptionsUrl, httpOptions)
+      .pipe(
+        catchError(this.handleError('getNoFolderSubscriptions', []))
+      );
   }
 
   /**

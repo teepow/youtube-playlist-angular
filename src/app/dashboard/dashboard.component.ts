@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {DashboardService} from "../services/dashboard.service";
 import {Dashboard} from "../models/dashboard";
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-dashboard',
@@ -20,6 +21,5 @@ export class DashboardComponent implements OnInit {
   getDashboard(){
     this.dashboardService.getDashboard()
       .subscribe((data: Dashboard) => this.dashboard = {...data});
-    console.log(this.dashboard);
   }
 }

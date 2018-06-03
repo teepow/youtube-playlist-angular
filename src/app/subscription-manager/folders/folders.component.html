@@ -1,0 +1,39 @@
+<p>folders yo</p>
+          <ngb-accordion #acc="ngbAccordion" activeIds="ngb-panel-0" *ngIf="folders">
+            <ngb-panel *ngFor="let folder of folders" title="{{ folder?.name }}">
+              <ng-template ngbPanelContent>
+                <ngb-accordion #acc="ngbAccordion" activeIds="ngb-panel-0" *ngIf="folder?.subscriptions">
+                  <ngb-panel *ngFor="let subscription of folder?.subscriptions" title="{{ subscription?.title }}">
+                    <span class="folder_name">{{ subscription?.title }} </span>
+                    <!--<div class="dropdown-menu">-->
+                    <!--<a class="dropdown-item" href="/dashboard/{{ subscription?.id }}">Show videos</a>-->
+                    <!--<h6 class="dropdown-header">Move to folder</h6>-->
+                    <!--<ng-container *ngFor="let dropdown_folder of folders">-->
+                    <!--<a  *ngIf="dropdown_folder?.id != folder?.id"-->
+                    <!--class="dropdown-item" href="/subscriptions/{{ subscription?.id }}/{{ dropdown_folder?.id }}/edit">{{ dropdown_folder?.name }}</a>-->
+                    <!--</ng-container>-->
+                    <!--</div>-->
+                  </ngb-panel>
+                </ngb-accordion>
+              </ng-template>
+            </ngb-panel>
+            <!--<li *ngFor="let nav_folder of folders" class="nav-item">-->
+            <!--<button type="button" class="btn btn-outline-primary folder_button" (click)="isCollapsed = !isCollapsed"-->
+            <!--[attr.aria-expanded]="!isCollapsed" attr.aria-controls="{{ nav_folder.name }}">-->
+            <!--<span class="folder_name">{{ nav_folder?.name }}</span>-->
+            <!--</button>-->
+            <!--<div *ngFor="let subscription of nav_folder?.subscriptions">-->
+            <!--<button  id="{{ nav_folder.name }}" [ngbCollapse]="!isCollapsed" type="button" class="btn btn-no-border dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
+            <!--<span class="folder_name">{{ subscription?.title }} </span>-->
+            <!--</button>-->
+            <!--<div class="dropdown-menu">-->
+            <!--<a class="dropdown-item" href="/dashboard/{{ subscription?.id }}">Show videos</a>-->
+            <!--<h6 class="dropdown-header">Move to folder</h6>-->
+            <!--<ng-container *ngFor="let dropdown_folder of folders">-->
+            <!--<a  *ngIf="dropdown_folder?.id != nav_folder?.id"-->
+            <!--class="dropdown-item" href="/subscriptions/{{ subscription?.id }}/{{ dropdown_folder?.id }}/edit">{{ dropdown_folder?.name }}</a>-->
+            <!--</ng-container>-->
+            <!--</div>-->
+            <!--</div>-->
+            <!--</li>-->
+          </ngb-accordion>
