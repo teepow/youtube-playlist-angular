@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { SubscriptionManagerComponent } from './subscription-manager/subscription-manager.component';
-import {LoginComponent} from "./login/login.component";
-import {RequestResetComponent} from "./password/request-reset/request-reset.component";
-import {ResponseResetComponent} from "./password/response-reset/response-reset.component";
-import {SignupComponent} from "./signup/signup.component";
+import {LoginComponent} from "./auth/login/login.component";
+import {RequestResetComponent} from "./auth/password/request-reset/request-reset.component";
+import {ResponseResetComponent} from "./auth/password/response-reset/response-reset.component";
+import {SignupComponent} from "./auth/signup/signup.component";
 import {DashboardComponent} from "./dashboard/dashboard.component";
 import {BeforeLoginService as BeforeLogin} from "./services/before-login.service";
 import {AfterLoginService as AfterLogin} from "./services/after-login.service";

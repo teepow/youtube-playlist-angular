@@ -1,0 +1,19 @@
+.btn-no-border {
+  width: 100%;
+  background-color: #fff !important;
+}
+
+:host /deep/ .card-body {
+  padding: 0px;
+  color: blue;
+}
+
+:host /deep/ .card-body > .row {
+  color: red;
+}
+
+:host /deep/ .card-header > a {
+  color: #343a40;
+}
+
+

@@ -4,13 +4,14 @@ import {catchError} from "rxjs/operators";
 import {TokenService} from "./token.service";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Subscription} from "../models/subscription";
+import {Folder} from "../models/folder";
 
 @Injectable({
   providedIn: 'root'
 })
 export class SubscriptionService {
 
-  private noFolderSubscriptionsUrl = 'http://127.0.0.1:8000/subscriptions/no-folder';  // URL to web api
+  private subscriptionsBaseUrl = 'http://127.0.0.1:8000/subscriptions';  // URL to web api
 
   token = this.tokenService.getToken();
 
@@ -18,7 +19,7 @@ export class SubscriptionService {
               private tokenService: TokenService
   ) {}
 
-  /** GET noFolderSubscriptions from the server */
+  /** GET subscriptions that do not belong to a folder from the server */
   getNoFolderSubscriptions (): Observable<Subscription[]> {
     //set token in headers
     const httpOptions = {
@@ -27,7 +28,7 @@ export class SubscriptionService {
         'Authorization': 'Bearer ' + this.token
       })
     };
-    return this.http.get<Subscription[]>(this.noFolderSubscriptionsUrl, httpOptions)
+    return this.http.get<Subscription[]>(this.subscriptionsBaseUrl + '/no-folder', httpOptions)
       .pipe(
         catchError(this.handleError('getNoFolderSubscriptions', []))
       );

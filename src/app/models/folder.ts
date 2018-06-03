@@ -1,4 +1,4 @@
-import {Subscription} from "./models/subscription";
+import {Subscription} from "./subscription";
 
 export interface Folder {
   id: number;

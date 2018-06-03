@@ -6,10 +6,10 @@ import { SubscriptionManagerComponent } from './subscription-manager/subscriptio
 import { AppRoutingModule } from './/app-routing.module';
 
 import { HttpClientModule } from '@angular/common/http';
-import { LoginComponent } from './login/login.component';
-import { SignupComponent } from './signup/signup.component';
-import { RequestResetComponent } from './password/request-reset/request-reset.component';
-import { ResponseResetComponent } from './password/response-reset/response-reset.component';
+import { LoginComponent } from './auth/login/login.component';
+import { SignupComponent } from './auth/signup/signup.component';
+import { RequestResetComponent } from './auth/password/request-reset/request-reset.component';
+import { ResponseResetComponent } from './auth/password/response-reset/response-reset.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { SnotifyModule, SnotifyService, ToastDefaults } from 'ng-snotify';
@@ -37,7 +37,7 @@ import { FoldersComponent } from './subscription-manager/folders/folders.compone
     AppRoutingModule,
     FormsModule,
     SnotifyModule,
-    NgbModule.forRoot()
+    NgbModule.forRoot(),
   ],
   providers: [
     { provide: 'SnotifyToastConfig', useValue: ToastDefaults },

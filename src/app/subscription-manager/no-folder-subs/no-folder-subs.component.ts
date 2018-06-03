@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {Subscription} from "../../models/subscription";
 import {SubscriptionService} from "../../services/subscription.service";
+import {FolderService} from "../../services/folder.service";
+import {Folder} from "../../models/folder";
+import {SubscriptionManagerService} from "../../services/subscription-manager.service";
 
 @Component({
   selector: 'app-no-folder-subs',
@@ -11,13 +14,30 @@ export class NoFolderSubsComponent implements OnInit {
 
   noFolderSubscriptions : Subscription[];
 
-  constructor(private subscriptionService: SubscriptionService) { }
+  folders : Folder[];
+
+  constructor(private subscriptionService: SubscriptionService,
+              private folderService: FolderService,
+              private subscriptionManagerService: SubscriptionManagerService
+              ) { }
 
   ngOnInit() {
+    this.getNoFolderSubscriptions();
     this.getFolders();
   }
 
+  getNoFolderSubscriptions(): void {
+    this.subscriptionService.getNoFolderSubscriptions()
+      .subscribe(noFolderSubscriptions => this.noFolderSubscriptions = noFolderSubscriptions);
+  }
+
   getFolders(): void {
+    this.folderService.getFolders()
+      .subscribe(folders => this.folders = folders);
+  }
+
+  moveToFolder(subscription_id, folder_id) {
+    this.subscriptionManagerService.moveToFolder(subscription_id, folder_id);
     this.subscriptionService.getNoFolderSubscriptions()
       .subscribe(noFolderSubscriptions => this.noFolderSubscriptions = noFolderSubscriptions);
   }

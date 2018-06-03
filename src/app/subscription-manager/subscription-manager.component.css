@@ -1,0 +1,27 @@
+:host /deep/ .btn-no-border:focus, .btn:focus {
+  box-shadow: none;
+}
+
+.sidebar {
+  position: fixed;
+  height: 100%;
+  border-right: 1px solid #343a40;
+}
+
+.add-folder {
+  position: fixed;
+  bottom: 0;
+}
+
+small {
+  margin-left: 12px;
+}
+
+.form-inline {
+  vertical-align: top;
+}
+
+.btn-secondary {
+  margin-left: 5px;
+  margin-top: 8px;
+}
