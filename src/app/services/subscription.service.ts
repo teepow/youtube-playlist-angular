@@ -21,17 +21,17 @@ export class SubscriptionService {
 
   /** GET subscriptions that do not belong to a folder from the server */
   getNoFolderSubscriptions (): Observable<Subscription[]> {
-    //set token in headers
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type':  'application/json',
-        'Authorization': 'Bearer ' + this.token
-      })
-    };
-    return this.http.get<Subscription[]>(this.subscriptionsBaseUrl + '/no-folder', httpOptions)
+    return this.http.get<Subscription[]>(this.subscriptionsBaseUrl + '/no-folder')
       .pipe(
         catchError(this.handleError('getNoFolderSubscriptions', []))
       );
+  }
+
+  deleteSubscription(subscription_id): Observable<Subscription[]> {
+    return this.http.delete<Subscription[]>(this.subscriptionsBaseUrl + '/' + subscription_id)
+    .pipe(
+      catchError(this.handleError('deleteSubscription', []))
+    );
   }
 
   /**

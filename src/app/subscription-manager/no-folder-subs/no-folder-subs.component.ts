@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {Subscription} from "../../models/subscription";
 import {SubscriptionService} from "../../services/subscription.service";
 import {FolderService} from "../../services/folder.service";
@@ -12,6 +12,8 @@ import {SubscriptionManagerService} from "../../services/subscription-manager.se
 })
 export class NoFolderSubsComponent implements OnInit {
 
+  @Input() folderSubscriptions: Subscription[];
+
   noFolderSubscriptions : Subscription[];
 
   folders : Folder[];
@@ -22,6 +24,9 @@ export class NoFolderSubsComponent implements OnInit {
               ) { }
 
   ngOnInit() {
+    this.subscriptionManagerService.subscriptionsSource.subscribe((noFolderSubscriptions) => {
+       this.noFolderSubscriptions = noFolderSubscriptions;
+    });
     this.getNoFolderSubscriptions();
     this.getFolders();
   }
@@ -39,6 +44,11 @@ export class NoFolderSubsComponent implements OnInit {
   moveToFolder(subscription_id, folder_id) {
     this.subscriptionManagerService.moveToFolder(subscription_id, folder_id);
     this.subscriptionService.getNoFolderSubscriptions()
+      .subscribe(noFolderSubscriptions => this.noFolderSubscriptions = noFolderSubscriptions);
+  }
+
+  deleteSubscription(subscription_id) {
+    this.subscriptionService.deleteSubscription(subscription_id)
       .subscribe(noFolderSubscriptions => this.noFolderSubscriptions = noFolderSubscriptions);
   }
 }

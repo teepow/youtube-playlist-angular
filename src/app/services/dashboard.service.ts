@@ -1,10 +1,8 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable, of} from "rxjs/index";
-import {catchError} from "rxjs/operators";
 import {Dashboard} from "../models/dashboard";
 import {TokenService} from "./token.service";
-import { HttpHeaders } from '@angular/common/http';
 
 
 @Injectable({
@@ -22,15 +20,7 @@ export class DashboardService {
 
   /** GET dashboard from the server */
   getDashboard() {
-    //set token in headers
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type':  'application/json',
-        'Authorization': 'Bearer ' + this.token
-      })
-    };
-
-    return this.http.get<Dashboard>(this.dashboardUrl, httpOptions);
+    return this.http.get<Dashboard>(this.dashboardUrl);
   }
 
   /**

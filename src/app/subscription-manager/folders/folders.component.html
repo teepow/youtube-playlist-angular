@@ -1,19 +1,21 @@
-          <ngb-accordion #acc="ngbAccordion" activeIds="ngb-panel-0" *ngIf="folders">
-            <ngb-panel *ngFor="let folder of folders" title="{{ folder?.name }}">
+<ngb-accordion [dragula]='"bag-one"' [dragulaModel]='folders' #acc="ngbAccordion" activeIds="ngb-panel-0" *ngIf="folders">
+  <ngb-panel *ngFor="let folder of folders" id="{{ folder?.id }}" title="{{ folder?.name }}">
 
-                    <ng-template ngbPanelContent>
-                      <div class="col" *ngFor="let subscription of folder?.subscriptions" class="row">
-                        <div ngbDropdown class="d-inline-block">
-                          <button  class="btn btn-no-border" id="dropdownBasic1" ngbDropdownToggle>{{ subscription?.title}}</button>
-                          <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-                            <button class="dropdown-item">Show Videos</button>
-                            <button class="dropdown-item" disabled>Move to folder</button>
-                            <button *ngFor="let folder of folders" class="dropdown-item"
-                                    (click)="moveToFolder(subscription?.id, folder?.id)">{{ folder?.id }}</button>
-                          </div>
-                        </div>
-                      </div>
-                    </ng-template>
+          <ng-template ngbPanelContent>
+            <div class="col" *ngFor="let subscription of folder?.subscriptions" class="row">
+              <div ngbDropdown class="d-inline-block">
+                <button  class="btn btn-no-border" id="dropdownBasic1" ngbDropdownToggle>{{ subscription?.title}}</button>
+                <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                  <button class="dropdown-item" (click)="deleteSubscription(subscription?.id)">Unsubscribe</button>
+                  <button class="dropdown-item">Show Videos</button>
+                  <button class="dropdown-item" disabled>Move to folder</button>
+                  <button class="dropdown-item" (click)="moveToNoFolder(subscription?.id)">Default</button>
+                  <button *ngFor="let folder of folders" class="dropdown-item"
+                          (click)="moveToFolder(subscription?.id, folder?.id)">{{ folder?.id }}</button>
+                </div>
+              </div>
+            </div>
+          </ng-template>
 
-            </ngb-panel>
-          </ngb-accordion>
+  </ngb-panel>
+</ngb-accordion>

@@ -7,13 +7,15 @@ import { catchError, map, tap } from 'rxjs/operators';
 
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import {TokenService} from "./token.service";
+import {Subscription} from "../models/subscription";
 
 @Injectable({
   providedIn: 'root'
 })
 export class FolderService {
 
-  private foldersUrl = 'http://127.0.0.1:8000/folders';  // URL to web api
+  private foldersBaseUrl = 'http://127.0.0.1:8000/folders';  // URL to web api
+  private subscriptionsBaseUrl = 'http://127.0.0.1:8000/subscriptions';  // URL to web api
 
   token = this.tokenService.getToken();
 
@@ -23,16 +25,16 @@ export class FolderService {
 
   /** GET folders from the server */
   getFolders (): Observable<Folder[]> {
-    //set token in headers
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type':  'application/json',
-        'Authorization': 'Bearer ' + this.token
-      })
-    };
-    return this.http.get<Folder[]>(this.foldersUrl, httpOptions)
+    return this.http.get<Folder[]>(this.foldersBaseUrl)
     .pipe(
       catchError(this.handleError('getFolders', []))
+    );
+  }
+
+  deleteSubscription(subscription_id): Observable<Folder[]> {
+    return this.http.delete<Folder[]>(this.subscriptionsBaseUrl + '/' + subscription_id)
+    .pipe(
+      catchError(this.handleError('deleteSubscription', []))
     );
   }
 
