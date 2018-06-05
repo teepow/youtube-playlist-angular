@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { NoFolderSubsComponent } from './no-folder-subs.component';
+import { SubscriptionsComponent } from './subscriptions.component';
 
-describe('NoFolderSubsComponent', () => {
-  let component: NoFolderSubsComponent;
-  let fixture: ComponentFixture<NoFolderSubsComponent>;
+describe('SubscriptionsComponent', () => {
+  let component: SubscriptionsComponent;
+  let fixture: ComponentFixture<SubscriptionsComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ NoFolderSubsComponent ]
+      declarations: [ SubscriptionsComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(NoFolderSubsComponent);
+    fixture = TestBed.createComponent(SubscriptionsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {SubscriptionManagerService} from "../services/subscription-manager.service";
+import {FolderService} from "../../services/folder.service";
 
 @Component({
   selector: 'app-folder-form',
@@ -12,13 +12,12 @@ export class FolderFormComponent implements OnInit {
     folder_name : null
   }
 
-  constructor(private subscriptionManagerService : SubscriptionManagerService) { }
+  constructor(private folderService : FolderService) { }
 
   ngOnInit() {
   }
 
   onSubmit() {
-  console.log(this.form);
-  this.subscriptionManagerService.addFolder(this.form);
+    this.folderService.addFolder(this.form);
   }
 }

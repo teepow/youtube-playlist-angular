@@ -4,14 +4,21 @@
 
       <li class="nav-item add-folder">
         <small id="emailHelp" class="form-text text-muted">create new folder</small>
-
         <app-folder-form></app-folder-form>
-
       </li>
 
       <app-folders></app-folders>
 
-      <app-no-folder-subs></app-no-folder-subs>
+      <li class="nav-item" *ngFor="let subscription of noFolderSubscriptions">
+        <div class="row">
+          <div class="col">
+            <div ngbDropdown class="d-inline-block">
+              <button class="btn btn-no-border" id="dropdownBasic1" ngbDropdownToggle>{{ subscription?.title}}</button>
+                <app-subscriptions [subscription]="subscription" [folders]="folders"></app-subscriptions>
+            </div>
+          </div>
+        </div>
+      </li>
 
     </ul>
   </div>

@@ -14,9 +14,9 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { SnotifyModule, SnotifyService, ToastDefaults } from 'ng-snotify';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
-import { NoFolderSubsComponent } from './subscription-manager/no-folder-subs/no-folder-subs.component';
+import { SubscriptionsComponent } from './subscription-manager/subscriptions/subscriptions.component';
 import { FoldersComponent } from './subscription-manager/folders/folders.component';
-import { FolderFormComponent } from './folder-form/folder-form.component';
+import { FolderFormComponent } from './subscription-manager/folder-form/folder-form.component';
 import { DragulaModule } from 'ng2-dragula';
 import {AuthInterceptor} from "./http-interceptors/auth-interceptor";
 
@@ -31,7 +31,7 @@ import {AuthInterceptor} from "./http-interceptors/auth-interceptor";
     ResponseResetComponent,
     NavbarComponent,
     DashboardComponent,
-    NoFolderSubsComponent,
+    SubscriptionsComponent,
     FoldersComponent,
     FolderFormComponent
   ],

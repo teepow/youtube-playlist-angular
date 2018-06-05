@@ -27,6 +27,23 @@ export class FoldersComponent implements OnInit {
     });
   }
 
+  ngOnInit() {
+    this.subscriptionManagerService.foldersSource.subscribe((folders) => {
+      this.folders = folders;
+    });
+
+    this.folderService.foldersSource.subscribe((folders) => {
+      this.folders = folders;
+    });
+
+    this.getFolders();
+  }
+
+  getFolders(): void {
+    this.folderService.getFolders()
+      .subscribe(folders => this.folders = folders);
+  }
+
   onDrop(grandparent) {
     var parentDivs = grandparent.childNodes;
     var folderIds = this.getFolderIds(parentDivs);
@@ -34,7 +51,7 @@ export class FoldersComponent implements OnInit {
     console.log(folderIds);
   }
 
-  getFolderIds(parentDivs) {
+  private getFolderIds(parentDivs) {
     var folderIds = [];
 
     for(let i = 1; i < parentDivs.length; i++) {
@@ -44,35 +61,10 @@ export class FoldersComponent implements OnInit {
     return folderIds;
   }
 
-  getFolderId(parentDiv) {
+  private getFolderId(parentDiv) {
     let div = parentDiv.childNodes[0];
     let divId = div.id;
     let folderId = divId.substring(0, divId.indexOf('-'));
     return folderId;
-  }
-
-  ngOnInit() {
-    this.subscriptionManagerService.foldersSource.subscribe((folders) => {
-      this.folders = folders;
-    });
-    this.getFolders();
-  }
-
-  getFolders(): void {
-    this.folderService.getFolders()
-      .subscribe(folders => this.folders = folders);
-  }
-
-  moveToFolder(subscription_id, folder_id) {
-    this.subscriptionManagerService.moveToFolder(subscription_id, folder_id);
-  }
-
-  moveToNoFolder(subscription_id) {
-    this.subscriptionManagerService.moveToNoFolder(subscription_id);
-  }
-
-  deleteSubscription(subscription_id) {
-    this.folderService.deleteSubscription(subscription_id)
-      .subscribe(folders => this.folders = folders);
   }
 }

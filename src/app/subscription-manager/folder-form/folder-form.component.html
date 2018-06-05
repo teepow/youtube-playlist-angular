@@ -1,0 +1,8 @@
+<form #folderForm="ngForm" method="post" (ngSubmit)="onSubmit(folderForm)">
+  <div class="form-group">
+    <input type="text" class="form-control" id="folder_name"
+           [(ngModel)]="form.folder_name" name="folder_name" placeholder="folder name..." required>
+
+    <button type="submit" class="btn btn-secondary mb-2">add</button>
+  </div>
+</form>

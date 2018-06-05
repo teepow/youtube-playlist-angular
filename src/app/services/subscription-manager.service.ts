@@ -1,57 +1,42 @@
 import { Injectable } from '@angular/core';
 import {BehaviorSubject, Observable, of} from "rxjs/index";
-import {HttpClient, HttpHeaders} from "@angular/common/http";
-import {Folder} from "../models/folder";
-import {TokenService} from "./token.service";
-import {FolderService} from "./folder.service";
-import {Subscription} from "../models/subscription";
+import {HttpClient} from "@angular/common/http";
 
 @Injectable({
   providedIn: 'root'
 })
 export class SubscriptionManagerService {
 
-  //Holds the folders; Changes value as folders are updated
   foldersSource: BehaviorSubject<any> = new BehaviorSubject([]);
   subscriptionsSource: BehaviorSubject<any> = new BehaviorSubject([]);
 
-  private subscriptionsBaseUrl = 'http://127.0.0.1:8000/subscriptions';  // URL to web api
-  private foldersBaseUrl = 'http://127.0.0.1:8000/folders';
+  private subscriptionsBaseUrl = 'http://127.0.0.1:8000/subscriptions';
 
-  token = this.tokenService.getToken();
-
-  constructor(private http: HttpClient,
-              private tokenService: TokenService,
-              private folderService: FolderService
-  ) { }
+  constructor(private http: HttpClient) { }
 
   moveToFolder(subscription_id, folder_id) {
     this.http.get(this.subscriptionsBaseUrl + '/' + subscription_id + '/' + folder_id + '/edit')
-      .subscribe((folders) => this.foldersSource.next(folders));
+      .subscribe(response => this.loadBehaviorSubjects(response));
   }
 
   moveToNoFolder(subscription_id) {
-    this.http.get(this.subscriptionsBaseUrl + '/' + subscription_id + '/' + 0 + '/edit')
-      .subscribe((subscriptions) => this.subscriptionsSource.next(subscriptions));
+    this.http.get(this.subscriptionsBaseUrl + '/' + subscription_id + '/edit')
+      .subscribe(response => this.loadBehaviorSubjects(response));
   }
 
-  addFolder(form) {
-    this.http.post(this.foldersBaseUrl, form)
-      .subscribe((folders) => this.foldersSource.next(folders));
+  deleteSubscription(subscription_id){
+    this.http.delete(this.subscriptionsBaseUrl + '/' + subscription_id)
+      .subscribe(response => this.loadBehaviorSubjects(response));
   }
 
-  /**
-   * Handle Http operation that failed.
-   * Let the app continue.
-   * @param operation - name of the operation that failed
-   * @param result - optional value to return as the observable result
-   */
+  private loadBehaviorSubjects(response) {
+          this.foldersSource.next(response['folders']),
+          this.subscriptionsSource.next(response['no_folder_subscriptions'])
+          console.log(this.subscriptionsSource);
+  }
+
   private handleError<T> (operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
-
-      // TODO: send the error to remote logging infrastructure
-
-      // Let the app keep running by returning an empty result.
       return of(result as T);
     };
   }
