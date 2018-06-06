@@ -15,5 +15,16 @@
 :host /deep/ .card-header > a {
   color: #343a40;
 }
+:host /deep/ .card-body > .delete-button::after {
+	content: url('/assets/images/delete.svg');
+	width: 15px;
+	height: 15px;
+	float: right;
+}
+
+:host /deep/ .card-body > .delete-button{
+	text-align: left;
+}
+
 
 

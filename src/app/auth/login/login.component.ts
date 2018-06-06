@@ -3,6 +3,7 @@ import {AuthenticationService} from "../../services/authentication.service";
 import {TokenService} from "../../services/token.service";
 import {Router} from "@angular/router";
 import {AuthStatusService} from "../../services/auth-status.service";
+import {NavbarService} from "../../services/navbar.service";
 
 @Component({
   selector: 'app-login',
@@ -14,7 +15,8 @@ export class LoginComponent implements OnInit {
   constructor(private authenticationService: AuthenticationService,
               private tokenService: TokenService,
               private router: Router,
-              private authStatus: AuthStatusService
+              private authStatus: AuthStatusService,
+              private navbarService: NavbarService
               ) { }
 
   errors = [];
@@ -34,7 +36,7 @@ export class LoginComponent implements OnInit {
   handleResponse(data) {
     this.tokenService.handleToken(data.access_token);
     this.authStatus.changeStatus(true);
-    this.router.navigateByUrl('/dashboard');
+    this.router.navigateByUrl('/');
   }
 
   handleError(error) {
@@ -42,6 +44,7 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.navbarService.hide();
   }
 
 }

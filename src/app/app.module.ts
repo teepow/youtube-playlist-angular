@@ -19,6 +19,9 @@ import { FoldersComponent } from './subscription-manager/folders/folders.compone
 import { FolderFormComponent } from './subscription-manager/folder-form/folder-form.component';
 import { DragulaModule } from 'ng2-dragula';
 import {AuthInterceptor} from "./http-interceptors/auth-interceptor";
+import { ChannelSearchFormComponent } from './navbar/channel-search-form/channel-search-form.component';
+import { ChannelComponent } from './channel/channel.component';
+import { VideosComponent } from './videos/videos.component';
 
 
 @NgModule({
@@ -33,7 +36,10 @@ import {AuthInterceptor} from "./http-interceptors/auth-interceptor";
     DashboardComponent,
     SubscriptionsComponent,
     FoldersComponent,
-    FolderFormComponent
+    FolderFormComponent,
+    ChannelSearchFormComponent,
+    ChannelComponent,
+    VideosComponent
   ],
   imports: [
     HttpClientModule,

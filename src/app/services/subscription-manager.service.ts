@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {BehaviorSubject, Observable, of} from "rxjs/index";
+import {BehaviorSubject, Observable} from "rxjs/index";
 import {HttpClient} from "@angular/common/http";
 
 @Injectable({

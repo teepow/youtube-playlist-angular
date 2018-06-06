@@ -1,5 +1,9 @@
-<nav class="navbar navbar-light bg-light justify-content-between">
-  <a href="#" class="navbar-brand">Manage Subscriptions</a>
+<nav *ngIf="nav.visible" class="navbar navbar-light bg-light justify-content-between">
+	
+  <div class="div-inline">
+  	<a href="#" class="navbar-brand">Manage Subscriptions</a>
+  	<app-channel-search-form></app-channel-search-form>
+  </div>
   <div>
     <a class="navbar-brand" routerLink="login" *ngIf="!loggedIn">Login</a>
     <a class="navbar-brand" href="#" (click)="logout($event)" *ngIf="loggedIn">Logout</a>

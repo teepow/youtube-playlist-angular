@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {AuthStatusService} from "../services/auth-status.service";
 import {Router} from "@angular/router";
 import {TokenService} from "../services/token.service";
+import {NavbarService} from "../services/navbar.service";
 
 @Component({
   selector: 'app-navbar',
@@ -14,7 +15,8 @@ export class NavbarComponent implements OnInit {
 
   constructor(private authStatus: AuthStatusService,
               private router: Router,
-              private tokenService: TokenService
+              private tokenService: TokenService,
+              public nav: NavbarService
   ) { }
 
   ngOnInit() {

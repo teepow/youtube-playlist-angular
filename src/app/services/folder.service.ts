@@ -22,8 +22,12 @@ export class FolderService {
   addFolder(form) {
     this.http.post(this.foldersBaseUrl, form)
       .subscribe((folders) => this.foldersSource.next(folders));
-    console.log(this.foldersSource);
   }
+
+  deleteFolder(folder_id) : Observable<Folder[]> {
+    return this.http.delete<Folder[]>(this.foldersBaseUrl + '/' + folder_id);
+  }
+
   private handleError<T> (operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
       return of(result as T);

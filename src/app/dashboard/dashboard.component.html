@@ -1,87 +1,9 @@
+    <app-navbar></app-navbar>
     <app-subscription-manager></app-subscription-manager>
-          <!--<ngb-accordion #acc="ngbAccordion" activeIds="ngb-panel-0" *ngIf="dashboard?.folders">-->
-            <!--<ngb-panel *ngFor="let nav_folder of dashboard?.folders" title="{{ nav_folder?.name }}">-->
-              <!--<ng-template ngbPanelContent>-->
-                <!--<ngb-accordion #acc="ngbAccordion" activeIds="ngb-panel-0" *ngIf="nav_folder?.subscriptions">-->
-                  <!--<ngb-panel *ngFor="let subscription of nav_folder?.subscriptions" title="{{ subscription?.title }}">-->
-                    <!--<span class="folder_name">{{ subscription?.title }} </span>-->
-                  <!--&lt;!&ndash;<div class="dropdown-menu">&ndash;&gt;-->
-                    <!--&lt;!&ndash;<a class="dropdown-item" href="/dashboard/{{ subscription?.id }}">Show videos</a>&ndash;&gt;-->
-                    <!--&lt;!&ndash;<h6 class="dropdown-header">Move to folder</h6>&ndash;&gt;-->
-                    <!--&lt;!&ndash;<ng-container *ngFor="let dropdown_folder of folders">&ndash;&gt;-->
-                      <!--&lt;!&ndash;<a  *ngIf="dropdown_folder?.id != nav_folder?.id"&ndash;&gt;-->
-                          <!--&lt;!&ndash;class="dropdown-item" href="/subscriptions/{{ subscription?.id }}/{{ dropdown_folder?.id }}/edit">{{ dropdown_folder?.name }}</a>&ndash;&gt;-->
-                    <!--&lt;!&ndash;</ng-container>&ndash;&gt;-->
-                  <!--&lt;!&ndash;</div>&ndash;&gt;-->
-                  <!--</ngb-panel>-->
-                <!--</ngb-accordion>-->
-              <!--</ng-template>-->
-            <!--</ngb-panel>-->
-            <!--&lt;!&ndash;<li *ngFor="let nav_folder of dashboard?.folders" class="nav-item">&ndash;&gt;-->
-                <!--&lt;!&ndash;<button type="button" class="btn btn-outline-primary folder_button" (click)="isCollapsed = !isCollapsed"&ndash;&gt;-->
-                        <!--&lt;!&ndash;[attr.aria-expanded]="!isCollapsed" attr.aria-controls="{{ nav_folder.name }}">&ndash;&gt;-->
-                          <!--&lt;!&ndash;<span class="folder_name">{{ nav_folder?.name }}</span>&ndash;&gt;-->
-                <!--&lt;!&ndash;</button>&ndash;&gt;-->
-              <!--&lt;!&ndash;<div *ngFor="let subscription of nav_folder?.subscriptions">&ndash;&gt;-->
-                <!--&lt;!&ndash;<button  id="{{ nav_folder.name }}" [ngbCollapse]="!isCollapsed" type="button" class="btn btn-no-border dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">&ndash;&gt;-->
-                  <!--&lt;!&ndash;<span class="folder_name">{{ subscription?.title }} </span>&ndash;&gt;-->
-                <!--&lt;!&ndash;</button>&ndash;&gt;-->
-                <!--&lt;!&ndash;<div class="dropdown-menu">&ndash;&gt;-->
-                  <!--&lt;!&ndash;<a class="dropdown-item" href="/dashboard/{{ subscription?.id }}">Show videos</a>&ndash;&gt;-->
-                  <!--&lt;!&ndash;<h6 class="dropdown-header">Move to folder</h6>&ndash;&gt;-->
-                  <!--&lt;!&ndash;<ng-container *ngFor="let dropdown_folder of folders">&ndash;&gt;-->
-                    <!--&lt;!&ndash;<a  *ngIf="dropdown_folder?.id != nav_folder?.id"&ndash;&gt;-->
-                      <!--&lt;!&ndash;class="dropdown-item" href="/subscriptions/{{ subscription?.id }}/{{ dropdown_folder?.id }}/edit">{{ dropdown_folder?.name }}</a>&ndash;&gt;-->
-                  <!--&lt;!&ndash;</ng-container>&ndash;&gt;-->
-                <!--&lt;!&ndash;</div>&ndash;&gt;-->
-              <!--&lt;!&ndash;</div>&ndash;&gt;-->
-            <!--&lt;!&ndash;</li>&ndash;&gt;-->
-          <!--</ngb-accordion>-->
-    <!--<main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">-->
-      <!--<div *ngIf="!channel && !videos" class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">-->
-        <!--<h1 class="h2">Dashboard</h1>-->
-      <!--</div>-->
-
-      <!--<div class="album py-5">-->
-        <!--<div class="container">-->
-          <!--<div *ngIf="!channel" class="jumbotron jumbotron-fluid">-->
-            <!--<div class="container">-->
-              <!--<img src="{{ channel['banner'] }}" class="img-fluid" alt="">-->
-              <!--<h1 class="display-3">{{ channel['title'] }}</h1>-->
-              <!--<p class="lead">{{ channel['description'] }}</p>-->
-              <!--<hr class="my-4">-->
-              <!--<p class="lead">-->
-              <!--<form method="post" action="/subscriptions">-->
-                <!--{{ csrf_field() }}-->
-                <!--<input type="hidden" name="channel_id" value="{{ channel['id'] }}">-->
-                <!--<input type="submit" class="btn btn-primary btn-lg" value="Subscribe">-->
-              <!--</form>-->
-              <!--</p>-->
-            <!--</div>-->
-          <!--</div>-->
-          <!--<div *ngIf="videos && !channel" class="row">-->
-            <!--<div *ngFor="let video of videos" class="col-md-4 card-deck">-->
-              <!--<div class="card mb-4 box-shadow">-->
-                <!--<img class="card-img-top" src="{{ video['thumbnail'] }}" alt="Card image cap">-->
-                <!--<div class="card-body">-->
-                  <!--<div class="d-flex justify-content-between align-items-center">-->
-                    <!--<div class="btn-group">-->
-                      <!--<form action="/playlists/1/{{ video['id'] }}" method="post">-->
-                        <!--{{ csrf_field() }}-->
-                        <!--<button type="submit" class="btn btn-sm btn-outline-secondary">View</button>-->
-                        <!--<button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>-->
-                      <!--</form>-->
-                    <!--</div>-->
-                  <!--</div>-->
-                  <!--<br>-->
-                  <!--<h6 class="card-title"><b>{{ video['title'] }}</b></h6>-->
-                  <!--<hr>-->
-                  <!--<p class="card-text">{{ video['description'] }}</p>-->
-                <!--</div>-->
-              <!--</div>-->
-            <!--</div>-->
-          <!--</div>-->
-        <!--</div>-->
-      <!--</div>-->
-    <!--</main>-->
+    <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+      <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
+        <h1 class="h2">Dashboard</h1>
+      </div>
+      <router-outlet></router-outlet>
+    </main>
 

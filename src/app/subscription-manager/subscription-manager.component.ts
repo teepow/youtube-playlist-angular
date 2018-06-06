@@ -32,6 +32,10 @@ export class SubscriptionManagerComponent implements OnInit {
       this.folders = folders;
     });
 
+    this.subscriptionService.subscriptionsSource.subscribe((noFolderSubscriptions) => {
+       this.noFolderSubscriptions = noFolderSubscriptions;
+    });
+
     this.getNoFolderSubscriptions();
 
     this.getFolders();

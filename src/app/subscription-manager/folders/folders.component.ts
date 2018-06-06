@@ -51,6 +51,11 @@ export class FoldersComponent implements OnInit {
     console.log(folderIds);
   }
 
+  deleteFolder(folder_id) {
+    this.folderService.deleteFolder(folder_id)
+      .subscribe(folders => this.folders = folders);
+  }
+
   private getFolderIds(parentDivs) {
     var folderIds = [];
 

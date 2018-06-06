@@ -1,15 +1,14 @@
 <ngb-accordion [dragula]='"bag-one"' [dragulaModel]='folders' #acc="ngbAccordion" activeIds="ngb-panel-0" *ngIf="folders">
   <ngb-panel *ngFor="let folder of folders" id="{{ folder?.id }}" title="{{ folder?.name }}">
-
           <ng-template ngbPanelContent>
+                <button  class="btn btn-no-border delete-button" (click)="deleteFolder(folder?.id)">Delete folder</button>
             <div class="col" *ngFor="let subscription of folder?.subscriptions" class="row">
               <div ngbDropdown class="d-inline-block">
                 <button  class="btn btn-no-border" id="dropdownBasic1" ngbDropdownToggle>{{ subscription?.title}}</button>
-
                 <app-subscriptions [subscription]="subscription" [folders]="folders"></app-subscriptions>
               </div>
             </div>
           </ng-template>
-
   </ngb-panel>
 </ngb-accordion>
+

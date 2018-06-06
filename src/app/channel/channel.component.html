@@ -1,0 +1,12 @@
+<div class="album py-5">
+	<div class="container">
+	  <div *ngIf="channel" class="jumbotron jumbotron-fluid">
+	    <div class="container">
+	      <img src="{{ channel?.banner }}" class="img-fluid" alt="">
+	      <h1 class="display-3">{{ channel?.title }}</h1>
+	      <p class="lead">{{ channel?.description }}</p>
+	      <hr class="my-4">
+	        <a class="btn btn-primary btn-lg" (click)="subscribe(channel?.id)">Subscribe</a>
+	    </div>
+	  </div>
+</div>
