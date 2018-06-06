@@ -21,7 +21,6 @@ export class SubscriptionService {
   addSubscription(channel_id) {
     this.http.post(this.subscriptionsBaseUrl,  {'channel_id' : channel_id})
       .subscribe(response => this.subscriptionsSource.next(response));
-
   }
 
   private handleError<T> (operation = 'operation', result?: T) {

@@ -1,6 +1,6 @@
 <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
   <button class="dropdown-item" (click)="deleteSubscription(subscription?.id)">Unsubscribe</button>
-  <button class="dropdown-item">Show Videos</button>
+  <button class="dropdown-item" (click)="showVideos(subscription?.id)">Show Videos</button>
   <button class="dropdown-item" disabled>Move to folder</button>
   <button *ngIf="subscription?.folder_id" class="dropdown-item" (click)="moveToNoFolder(subscription?.id)">Default</button>
   <button *ngFor="let folder of folders" class="dropdown-item"

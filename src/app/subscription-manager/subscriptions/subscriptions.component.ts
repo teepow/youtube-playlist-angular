@@ -1,9 +1,10 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Subscription} from "../../models/subscription";
-import {SubscriptionService} from "../../services/subscription.service";
 import {FolderService} from "../../services/folder.service";
 import {Folder} from "../../models/folder";
 import {SubscriptionManagerService} from "../../services/subscription-manager.service";
+import {VideoService} from "../../services/video.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-subscriptions',
@@ -16,9 +17,10 @@ export class SubscriptionsComponent implements OnInit {
 
   @Input() folders : Folder[];
 
-  constructor(private subscriptionService: SubscriptionService,
-              private folderService: FolderService,
-              private subscriptionManagerService: SubscriptionManagerService
+  constructor(private folderService: FolderService,
+              private subscriptionManagerService: SubscriptionManagerService,
+              private videoService: VideoService,
+              private router: Router
               ) { }
 
   ngOnInit() {
@@ -34,5 +36,10 @@ export class SubscriptionsComponent implements OnInit {
 
   deleteSubscription(subscription_id) {
     this.subscriptionManagerService.deleteSubscription(subscription_id);
+  }
+
+  showVideos(subscription_id) {
+    this.videoService.showVideos(subscription_id);
+    this.router.navigateByUrl('/videos');
   }
 }

@@ -10,12 +10,12 @@ export class ChannelService {
 
   channelSource: BehaviorSubject<any> = new BehaviorSubject([]);
 
-  private youtubeBaseUrl = 'http://127.0.0.1:8000/youtube';
+  private channelBaseUrl = 'http://127.0.0.1:8000/channels';
 
   constructor(private http: HttpClient) {}
 
   getChannel(form) {
-  	this.http.post(this.youtubeBaseUrl, form)
+  	this.http.post(this.channelBaseUrl, form)
       .subscribe((channel) => this.channelSource.next(channel));
   }
 }
