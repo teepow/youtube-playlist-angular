@@ -1,4 +1,4 @@
-<div class="mt-lg-4 col-6 offset-3">
+<div class="mt-lg-4 col-8">
   <div class="card">
     <div class="card-header">Login</div>
     <div class="card-body">
@@ -17,6 +17,9 @@
             <input type="password" class="form-control" id="password" name="password" placeholder="Password"
                    [(ngModel)]="form.password" required>
           </div>
+            <div class="alert alert-danger mt-2 offset-4" [hidden]="!error">
+              {{error}}
+            </div>
         </div>
         <div class="form-group row">
           <div class="col-sm-8 offset-4">

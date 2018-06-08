@@ -47,8 +47,6 @@ export class FoldersComponent implements OnInit {
   onDrop(grandparent) {
     var parentDivs = grandparent.childNodes;
     var folderIds = this.getFolderIds(parentDivs);
-
-    console.log(folderIds);
   }
 
   deleteFolder(folder_id) {

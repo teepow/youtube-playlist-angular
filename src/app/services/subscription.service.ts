@@ -8,6 +8,7 @@ import {BehaviorSubject, Observable} from "rxjs/index";
 })
 export class SubscriptionService {
 
+  //subscribed to by SubscriptionManager component
   subscriptionsSource: BehaviorSubject<any> = new BehaviorSubject([]);
 
   private subscriptionsBaseUrl = 'http://127.0.0.1:8000/subscriptions';
@@ -21,11 +22,5 @@ export class SubscriptionService {
   addSubscription(channel_id) {
     this.http.post(this.subscriptionsBaseUrl,  {'channel_id' : channel_id})
       .subscribe(response => this.subscriptionsSource.next(response));
-  }
-
-  private handleError<T> (operation = 'operation', result?: T) {
-    return (error: any): Observable<T> => {
-      return of(result as T);
-    };
   }
 }

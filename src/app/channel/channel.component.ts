@@ -18,9 +18,10 @@ export class ChannelComponent implements OnInit {
    ) { }
 
   ngOnInit() {
-    this.channelService.channelSource.subscribe((channel) => {
+    this.channelService.channel.subscribe((channel) => {
        this.channel = channel;
     });
+    this.channel = JSON.parse(localStorage.getItem('channel'));
   }
 
   subscribe(channel_id) {

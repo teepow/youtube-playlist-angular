@@ -7,3 +7,9 @@ form {
 	float: right;
 	margin-left: 75px;
 }
+
+.error {
+    display: inline !important;
+    padding-left: 5px;
+    color: red;
+}

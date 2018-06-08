@@ -7,7 +7,9 @@ import {HttpClient} from "@angular/common/http";
 })
 export class SubscriptionManagerService {
 
+  //subscribed to by SubscriptionManager component
   foldersSource: BehaviorSubject<any> = new BehaviorSubject([]);
+  //subscribed to by SubscriptionManager component
   subscriptionsSource: BehaviorSubject<any> = new BehaviorSubject([]);
 
   private subscriptionsBaseUrl = 'http://127.0.0.1:8000/subscriptions';
@@ -32,12 +34,5 @@ export class SubscriptionManagerService {
   private loadBehaviorSubjects(response) {
           this.foldersSource.next(response['folders']),
           this.subscriptionsSource.next(response['no_folder_subscriptions'])
-          console.log(this.subscriptionsSource);
-  }
-
-  private handleError<T> (operation = 'operation', result?: T) {
-    return (error: any): Observable<T> => {
-      return of(result as T);
-    };
   }
 }

@@ -19,7 +19,7 @@ export class LoginComponent implements OnInit {
               private navbarService: NavbarService
               ) { }
 
-  errors = [];
+  error = null;
 
   public form = {
     email:null,
@@ -33,14 +33,16 @@ export class LoginComponent implements OnInit {
     );
   }
 
+  /*Use this approach for other components*/
   handleResponse(data) {
+    localStorage.clear();
     this.tokenService.handleToken(data.access_token);
     this.authStatus.changeStatus(true);
     this.router.navigateByUrl('/');
   }
 
   handleError(error) {
-    this.errors = error.error.errors;
+    this.error = error.error.error;
   }
 
   ngOnInit() {

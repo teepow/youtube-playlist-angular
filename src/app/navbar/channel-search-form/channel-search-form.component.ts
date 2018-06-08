@@ -13,6 +13,8 @@ export class ChannelSearchFormComponent implements OnInit {
   	url : null
   }
 
+  error : null;
+
   constructor(private channelService : ChannelService,
               private router: Router,) { }
 
@@ -20,7 +22,20 @@ export class ChannelSearchFormComponent implements OnInit {
   }
 
   onSubmit() {
-  	this.channelService.getChannel(this.form);
+  	this.channelService.getChannel(this.form).subscribe(
+        response => this.handleResponse(response),
+        error => this.handleError(error)
+      )
     this.router.navigateByUrl('/channel');
+  }
+
+  handleResponse(response) {
+    this.error = null;
+    this.channelService.changeChannel(response);
+    this.channelService.storeChannelInLocalStorage(response);
+  }
+
+  handleError(error) {
+    this.error = error.error.error;
   }
 }

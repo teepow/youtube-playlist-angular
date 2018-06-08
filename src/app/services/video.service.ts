@@ -16,6 +16,13 @@ export class VideoService {
 
   showVideos(subscription_id) {
       this.http.get(this.videosBaseUrl + '/' + subscription_id)
-      .subscribe(response => this.videosSource.next(response));
+      .subscribe(response => this.handleResponse(response));
+  }
+
+  handleResponse(response) {
+    this.videosSource.next(response);
+    var videos = JSON.stringify(response);
+    localStorage.removeItem('videos');
+    localStorage.setItem('videos', videos);
   }
 }

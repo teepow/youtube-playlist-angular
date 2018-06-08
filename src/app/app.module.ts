@@ -22,6 +22,7 @@ import {AuthInterceptor} from "./http-interceptors/auth-interceptor";
 import { ChannelSearchFormComponent } from './navbar/channel-search-form/channel-search-form.component';
 import { ChannelComponent } from './channel/channel.component';
 import { VideosComponent } from './videos/videos.component';
+import { PlaylistComponent } from './playlist/playlist.component';
 
 
 @NgModule({
@@ -39,7 +40,8 @@ import { VideosComponent } from './videos/videos.component';
     FolderFormComponent,
     ChannelSearchFormComponent,
     ChannelComponent,
-    VideosComponent
+    VideosComponent,
+    PlaylistComponent
   ],
   imports: [
     HttpClientModule,
@@ -52,6 +54,7 @@ import { VideosComponent } from './videos/videos.component';
   ],
   providers: [
 
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
     { provide: 'SnotifyToastConfig', useValue: ToastDefaults },
     SnotifyService,],

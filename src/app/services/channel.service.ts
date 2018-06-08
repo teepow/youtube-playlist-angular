@@ -8,14 +8,25 @@ import {BehaviorSubject} from "rxjs/internal/BehaviorSubject";
 })
 export class ChannelService {
 
-  channelSource: BehaviorSubject<any> = new BehaviorSubject([]);
+  private channelSource: BehaviorSubject<any> = new BehaviorSubject([]);
+
+  channel = this.channelSource.asObservable();
 
   private channelBaseUrl = 'http://127.0.0.1:8000/channels';
 
   constructor(private http: HttpClient) {}
 
   getChannel(form) {
-  	this.http.post(this.channelBaseUrl, form)
-      .subscribe((channel) => this.channelSource.next(channel));
+  	return this.http.post(this.channelBaseUrl, form);
+  }
+
+  changeChannel(response) {
+    this.channelSource.next(response);
+  }
+
+  storeChannelInLocalStorage(response) {
+    var channel = JSON.stringify(response);
+    localStorage.removeItem('channel');
+    localStorage.setItem('channel', channel);
   }
 }

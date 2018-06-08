@@ -39,7 +39,6 @@ export class SignupComponent implements OnInit {
 
   handleError(error) {
     this.errors = error.error.errors;
-    console.log(this.errors);
   }
 
   ngOnInit() {
