@@ -9,7 +9,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 })
 export class PlaylistComponent implements OnInit {
 
-  public playList = this.sanitizer.bypassSecurityTrustResourceUrl("https://www.youtube.com/embed/VIDEO_ID?playlist=" + playListService.playList);
+  public playList = this.sanitizer.bypassSecurityTrustResourceUrl("https://www.youtube.com/embed/VIDEO_ID?playlist=" + localStorage.getItem('playList'));
 
   constructor(private playListService: PlaylistService,
               private sanitizer: DomSanitizer

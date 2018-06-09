@@ -10,7 +10,10 @@ export class PlaylistService {
   constructor() { }
 
   addToPlaylist(video_id) {
+      if(localStorage.getItem('playList')) {
+          this.playList = localStorage.getItem('playList');
+      }
       this.playList += (video_id + ",");
-      console.log(this.playList);
+      localStorage.setItem('playList', this.playList);
   }
 }

@@ -23,6 +23,7 @@ import { ChannelSearchFormComponent } from './navbar/channel-search-form/channel
 import { ChannelComponent } from './channel/channel.component';
 import { VideosComponent } from './videos/videos.component';
 import { PlaylistComponent } from './playlist/playlist.component';
+import { PlaylistVideoListComponent } from './playlist-video-list/playlist-video-list.component';
 
 
 @NgModule({
@@ -41,7 +42,8 @@ import { PlaylistComponent } from './playlist/playlist.component';
     ChannelSearchFormComponent,
     ChannelComponent,
     VideosComponent,
-    PlaylistComponent
+    PlaylistComponent,
+    PlaylistVideoListComponent
   ],
   imports: [
     HttpClientModule,
