@@ -2,48 +2,25 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule} from "@angular/forms";
 import { AppComponent } from './app.component';
-import { SubscriptionManagerComponent } from './subscription-manager/subscription-manager.component';
 import { AppRoutingModule } from './/app-routing.module';
 
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
-import { LoginComponent } from './auth/login/login.component';
-import { SignupComponent } from './auth/signup/signup.component';
-import { RequestResetComponent } from './auth/password/request-reset/request-reset.component';
-import { ResponseResetComponent } from './auth/password/response-reset/response-reset.component';
-import { NavbarComponent } from './navbar/navbar.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
 import { SnotifyModule, SnotifyService, ToastDefaults } from 'ng-snotify';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
-import { SubscriptionsComponent } from './subscription-manager/subscriptions/subscriptions.component';
-import { FoldersComponent } from './subscription-manager/folders/folders.component';
-import { FolderFormComponent } from './subscription-manager/folder-form/folder-form.component';
-import { DragulaModule } from 'ng2-dragula';
 import {AuthInterceptor} from "./http-interceptors/auth-interceptor";
-import { ChannelSearchFormComponent } from './navbar/channel-search-form/channel-search-form.component';
-import { ChannelComponent } from './channel/channel.component';
-import { VideosComponent } from './videos/videos.component';
-import { PlaylistComponent } from './playlist/playlist.component';
-import { PlaylistVideoListComponent } from './playlist-video-list/playlist-video-list.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { LayoutModule } from '@angular/cdk/layout';
 
+/*
+* Feature Modules
+*/
+import {NavModule} from './nav/nav.module';
+import {DashboardModule} from "./dashboard/dashboard.module";
+import {AuthModule} from "./auth/auth.module";
 
 @NgModule({
   declarations: [
     AppComponent,
-    SubscriptionManagerComponent,
-    LoginComponent,
-    SignupComponent,
-    RequestResetComponent,
-    ResponseResetComponent,
-    NavbarComponent,
-    DashboardComponent,
-    SubscriptionsComponent,
-    FoldersComponent,
-    FolderFormComponent,
-    ChannelSearchFormComponent,
-    ChannelComponent,
-    VideosComponent,
-    PlaylistComponent,
-    PlaylistVideoListComponent
   ],
   imports: [
     HttpClientModule,
@@ -52,7 +29,11 @@ import { PlaylistVideoListComponent } from './playlist-video-list/playlist-video
     FormsModule,
     SnotifyModule,
     NgbModule.forRoot(),
-    DragulaModule
+    BrowserAnimationsModule,
+    LayoutModule,
+    NavModule,
+    DashboardModule,
+    AuthModule
   ],
   providers: [
 

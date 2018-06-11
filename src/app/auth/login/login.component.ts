@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {AuthenticationService} from "../../services/authentication.service";
-import {TokenService} from "../../services/token.service";
+import {AuthenticationService} from "../authentication.service";
+import {TokenService} from "../token/token.service";
 import {Router} from "@angular/router";
-import {AuthStatusService} from "../../services/auth-status.service";
-import {NavbarService} from "../../services/navbar.service";
+import {AuthStatusService} from "../auth-status.service";
+import {NavbarService} from "../../navbar/navbar.service";
 
 @Component({
   selector: 'app-login',
@@ -45,8 +45,5 @@ export class LoginComponent implements OnInit {
     this.error = error.error.error;
   }
 
-  ngOnInit() {
-    this.navbarService.hide();
-  }
-
+  ngOnInit() {}
 }

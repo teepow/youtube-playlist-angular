@@ -1,0 +1,14 @@
+.btn {
+    margin-top: 7px;
+    margin-left: 7px;
+}
+
+form {
+    float: right;
+}
+
+.error {
+    display: inline !important;
+    padding-left: 5px;
+    color: red;
+}

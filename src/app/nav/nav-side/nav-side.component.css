@@ -1,0 +1,9 @@
+.sidenav-container {
+  height: 100%;
+}
+
+.sidenav-container {
+    position: relative;
+    top: 64px !important;
+    z-index: 1;
+}

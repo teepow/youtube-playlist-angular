@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {AuthenticationService} from "../../services/authentication.service";
-import {TokenService} from "../../services/token.service";
+import {AuthenticationService} from "../authentication.service";
+import {TokenService} from "../token/token.service";
+import {AuthStatusService} from "../auth-status.service";
 import {Router} from "@angular/router";
 
 @Component({
@@ -12,6 +13,7 @@ export class SignupComponent implements OnInit {
 
   constructor(private authenticationService: AuthenticationService,
               private tokenService: TokenService,
+              private authStatus: AuthStatusService,
               private router: Router
               ) { }
 
@@ -33,8 +35,10 @@ export class SignupComponent implements OnInit {
   }
 
   handleResponse(data) {
+    localStorage.clear();
     this.tokenService.handleToken(data.access_token);
-    this.router.navigateByUrl('/dashboard');
+    this.authStatus.changeStatus(true);
+    this.router.navigateByUrl('/');
   }
 
   handleError(error) {

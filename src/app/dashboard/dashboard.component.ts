@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
-import {AuthStatusService} from "../services/auth-status.service";
+import {AuthStatusService} from "../auth/auth-status.service";
 
 @Component({
   selector: 'app-dashboard',
@@ -17,6 +17,5 @@ export class DashboardComponent implements OnInit {
     this.authStatus.status.subscribe((status) => {
        this.visible = status;
     });
-      console.log(this.visible);
   }
 }
