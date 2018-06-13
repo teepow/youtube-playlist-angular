@@ -18,5 +18,5 @@ export class AppComponent implements OnInit {
     this.authStatus.status.subscribe((status) => {
        this.visible = status;
     });
-    console.log(this.visible);
   }
+}

@@ -1,19 +1,20 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { SubscriptionManagerFolder } from './subscription-manager-folder';
 import { HttpClient } from '@angular/common/http';
 import {BehaviorSubject} from "rxjs/internal/BehaviorSubject";
+
+import { SubscriptionManagerFolder } from './subscription-manager-folder';
+
+import {TreeNode} from 'primeng/api';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SubscriptionManagerFolderService {
 
-  foldersSource: BehaviorSubject<any> = new BehaviorSubject([]);
-
   private foldersBaseUrl = 'http://127.0.0.1:8000/folders';
 
-  constructor(private http: HttpClient) {}
+    constructor(private http: HttpClient) {}
 
   getFolders (): Observable<SubscriptionManagerFolder[]> {
     return this.http.get<SubscriptionManagerFolder[]>(this.foldersBaseUrl);
@@ -21,16 +22,12 @@ export class SubscriptionManagerFolderService {
 
   addFolder(form) {
     this.http.post(this.foldersBaseUrl, form)
-      .subscribe((folders) => this.foldersSource.next(folders));
+      .subscribe(response => console.log(response));
   }
 
-  deleteFolder(folder_id) : Observable<SubscriptionManagerFolder[]> {
-    return this.http.delete<SubscriptionManagerFolder[]>(this.foldersBaseUrl + '/' + folder_id);
+  deleteFolder(folder_id) {
+    this.http.delete(this.foldersBaseUrl + '/' + folder_id)
+      .subscribe(response => console.log(response));
   }
 
-  private handleError<T> (operation = 'operation', result?: T) {
-    return (error: any): Observable<T> => {
-      return of(result as T);
-    };
-  }
 }

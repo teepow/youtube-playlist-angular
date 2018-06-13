@@ -1,4 +1,21 @@
 <ng-snotify></ng-snotify>
+
+        <router-outlet></router-outlet>
+<div  *ngIf="visible" class="ui-g container">
+    <div class="ui-g-12 top-nav">Nav</div>
+    <div class="ui-g-12 ui-md-2 ui-g-nopad side-nav">
+        <app-subscription-manager></app-subscription-manager>
+    </div>
+        <div class="ui-g-12 ui-md-10 ui-g-nopad ui-md-offset-2 header">Bar</div>
+        <div class="ui-g-12 ui-md-10 ui-g-nopad ui-md-offset-2 playlist">Playlist</div>
+    <div class="ui-g-12 ui-md-10 ui-g-nopad dashboard ui-md-offset-2">
+    </div>
+
+    <div class="ui-g-12 footer">
+        Footer
+    </div>
+</div>
+
 <app-nav-top *ngIf="visible"></app-nav-top>
 <app-nav-side *ngIf="visible"></app-nav-side>
-<app-dashboard></app-dashboard>
+<app-dashboard *ngIf="visible"></app-dashboard>

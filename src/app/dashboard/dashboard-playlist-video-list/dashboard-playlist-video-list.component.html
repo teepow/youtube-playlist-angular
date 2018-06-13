@@ -1,4 +1,6 @@
-<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
-        <img *ngFor="let video of videoList" width="30%" height="30%" src="{{video}}" alt="">
+<div class="ui-g">
+        <div class="ui-g-2" *ngFor="let video of videoList" >
+            <img src="{{video}}" alt="">
+        </div>
         <a (click)="startPlaylist()">Play Playlist</a>
 </div>

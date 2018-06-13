@@ -13,10 +13,6 @@ import {Router} from "@angular/router";
 })
 export class SubscriptionManagerSubscriptionsComponent implements OnInit {
 
-  @Input() subscription: SubscriptionManagerSubscription;
-
-  @Input() folders : SubscriptionManagerFolder[];
-
   constructor(private folderService: SubscriptionManagerFolderService,
               private subscriptionManagerService: SubscriptionManagerService,
               private videoService: DashboardVideoService,
@@ -24,22 +20,5 @@ export class SubscriptionManagerSubscriptionsComponent implements OnInit {
               ) { }
 
   ngOnInit() {
-  }
-
-  moveToFolder(subscription_id, folder_id) {
-    this.subscriptionManagerService.moveToFolder(subscription_id, folder_id);
-  }
-
-  moveToNoFolder(subscription_id) {
-    this.subscriptionManagerService.moveToNoFolder(subscription_id);
-  }
-
-  deleteSubscription(subscription_id) {
-    this.subscriptionManagerService.deleteSubscription(subscription_id);
-  }
-
-  showVideos(subscription_id) {
-    this.videoService.showVideos(subscription_id);
-    this.router.navigateByUrl('/videos');
   }
 }

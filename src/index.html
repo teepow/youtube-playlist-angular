@@ -3,6 +3,11 @@
 <head>
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+<script src="https://use.fontawesome.com/65ed7313a1.js"></script>
+
+
   <meta charset="utf-8">
   <title>YoutubePlaylistAngular</title>
   <base href="/">
@@ -12,5 +17,29 @@
 </head>
 <body>
   <app-root></app-root>
+
+<script>
+    window.addEventListener('scroll', function (evt) {
+
+  // This value is your scroll distance from the top
+  var distance_from_top = window.scrollY;
+
+  var playlist = document.getElementsByClassName("playlist")[0];
+
+  // The user has scrolled to the tippy top of the page. Set appropriate style.
+  if (distance_from_top < 64) {
+    playlist.style.top = "128px";
+    playlist.style.position = "absolute";
+  }
+
+  // The user has scrolled down the page.
+  if(distance_from_top >= 64) {
+    playlist.style.top = "64px";
+    playlist.style.position = "fixed";
+  }
+
+});
+</script>
+
 </body>
 </html>

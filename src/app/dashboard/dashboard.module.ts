@@ -2,6 +2,11 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule} from "@angular/router";
 
+/*
+*PrimeNg
+*/
+import {CardModule} from 'primeng/card';
+
 import { DashboardChannelComponent } from './dashboard-channel/dashboard-channel.component';
 import { DashboardPlaylistComponent } from './dashboard-playlist/dashboard-playlist.component';
 import { DashboardVideosComponent } from './dashboard-videos/dashboard-videos.component';
@@ -16,7 +21,9 @@ import {AuthModule} from "../auth/auth.module";
     CommonModule,
     NavModule,
     RouterModule,
-    AuthModule
+    AuthModule,
+    //PrimeNg
+    CardModule
   ],
   declarations: [
     DashboardComponent,

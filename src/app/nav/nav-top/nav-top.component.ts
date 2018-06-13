@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import {AuthStatusService} from "../../auth/auth-status.service";
 import {Router} from "@angular/router";
 import {TokenService} from "../../auth/token/token.service";
-import {NavbarService} from "../../navbar/navbar.service";
 
 @Component({
   selector: 'app-nav-top',
@@ -16,7 +15,6 @@ export class NavTopComponent implements OnInit {
   constructor(private authStatus: AuthStatusService,
               private router: Router,
               private tokenService: TokenService,
-              public nav: NavbarService
   ) { }
 
 

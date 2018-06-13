@@ -1,16 +1,13 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {SubscriptionManagerSubscription} from "./subscription-manager-subscription";
 import {BehaviorSubject, Observable} from "rxjs/index";
+
+import {SubscriptionManagerSubscription} from "./subscription-manager-subscription";
 
 @Injectable({
   providedIn: 'root'
 })
 export class SubscriptionManagerSubscriptionService {
-
-  //subscribed to by SubscriptionManager component
-  subscriptionsSource: BehaviorSubject<any> = new BehaviorSubject([]);
-
   private subscriptionsBaseUrl = 'http://127.0.0.1:8000/subscriptions';
 
   constructor(private http: HttpClient) {}
@@ -21,6 +18,21 @@ export class SubscriptionManagerSubscriptionService {
 
   addSubscription(channel_id) {
     this.http.post(this.subscriptionsBaseUrl,  {'channel_id' : channel_id})
-      .subscribe(response => this.subscriptionsSource.next(response));
+      .subscribe(response => console.log(response));
+  }
+
+  deleteSubscription(subscription_id){
+    this.http.delete(this.subscriptionsBaseUrl + '/' + subscription_id)
+      .subscribe(response => console.log(response));
+  }
+
+  moveToFolder(subscription_id, folder_id) {
+    this.http.get(this.subscriptionsBaseUrl + '/' + subscription_id + '/' + folder_id + '/edit')
+      .subscribe(response => console.log(response));
+  }
+
+  moveToNoFolder(subscription_id) {
+    this.http.get(this.subscriptionsBaseUrl + '/' + subscription_id + '/edit')
+      .subscribe(response => console.log(response));
   }
 }

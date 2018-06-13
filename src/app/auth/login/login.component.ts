@@ -3,7 +3,6 @@ import {AuthenticationService} from "../authentication.service";
 import {TokenService} from "../token/token.service";
 import {Router} from "@angular/router";
 import {AuthStatusService} from "../auth-status.service";
-import {NavbarService} from "../../navbar/navbar.service";
 
 @Component({
   selector: 'app-login',
@@ -16,7 +15,6 @@ export class LoginComponent implements OnInit {
               private tokenService: TokenService,
               private router: Router,
               private authStatus: AuthStatusService,
-              private navbarService: NavbarService
               ) { }
 
   error = null;

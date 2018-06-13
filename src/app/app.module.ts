@@ -11,6 +11,7 @@ import {AuthInterceptor} from "./http-interceptors/auth-interceptor";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LayoutModule } from '@angular/cdk/layout';
 
+
 /*
 * Feature Modules
 */
@@ -33,7 +34,7 @@ import {AuthModule} from "./auth/auth.module";
     LayoutModule,
     NavModule,
     DashboardModule,
-    AuthModule
+    AuthModule,
   ],
   providers: [
 

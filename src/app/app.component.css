@@ -1,1 +1,58 @@
+div {
+}
+
+html, body {
+    height: 100%;
+}
+
+.container {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+}
+
+.top-nav {
+    position: fixed;
+    height: 64px;
+    z-index: 999;
+    background-color: red;
+}
+
+.side-nav {
+    position: fixed;
+    height: 100%;
+    background-color: green;
+}
+
+.header {
+    height: 64px;
+    position: relative;
+    background-color: yellow;
+}
+
+.playlist {
+    height: 128px;
+    position: absolute;
+    top: 128px;
+    background-color: pink;
+    z-index: 1;
+}
+.dashboard {
+    position: relative;
+    height: 100%;
+    margin-top: 128px;
+    background-color: orange;
+}
+
+.footer {
+    position: relative;
+    bottom: 0;
+    height: 64px;
+    z-index: 999;
+    background-color: red;
+}
+
+.side-nav, .header {
+    margin-top: 64px;
+}
 

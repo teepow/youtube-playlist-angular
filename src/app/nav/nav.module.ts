@@ -3,6 +3,10 @@ import { CommonModule } from '@angular/common';
 import { LayoutModule } from '@angular/cdk/layout';
 import { FormsModule }   from '@angular/forms';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import {TreeModule} from 'primeng/tree';
+import {TreeNode} from 'primeng/api';
+import {DragulaModule} from "ng2-dragula";
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 import { NavTopComponent } from './nav-top/nav-top.component';
 import { NavSideComponent } from './nav-side/nav-side.component';
@@ -11,8 +15,6 @@ import { SubscriptionManagerComponent } from './nav-side/subscription-manager/su
 import { SubscriptionManagerFoldersComponent } from './nav-side/subscription-manager/subscription-manager-folders/subscription-manager-folders.component';
 import { SubscriptionManagerSubscriptionsComponent } from './nav-side/subscription-manager/subscription-manager-subscriptions/subscription-manager-subscriptions.component';
 import { SubscriptionManagerAddFolderFormComponent } from './nav-side/subscription-manager/subscription-manager-add-folder-form/subscription-manager-add-folder-form.component';
-import {DragulaModule} from "ng2-dragula";
-
 import {AuthModule} from "../auth/auth.module";
 
 @NgModule({
@@ -22,7 +24,9 @@ import {AuthModule} from "../auth/auth.module";
     NgbModule,
     DragulaModule,
     FormsModule,
-    AuthModule
+    AuthModule,
+    TreeModule,
+    BrowserAnimationsModule
   ],
   declarations: [
   NavTopComponent,
@@ -35,14 +39,13 @@ import {AuthModule} from "../auth/auth.module";
   ],
 
   exports: [
-  DragulaModule,
   NavTopComponent,
   NavSideComponent,
   NavTopChannelSearchFormComponent,
   SubscriptionManagerComponent,
   SubscriptionManagerFoldersComponent,
   SubscriptionManagerSubscriptionsComponent,
-  SubscriptionManagerAddFolderFormComponent
+  SubscriptionManagerAddFolderFormComponent,
 ]
 })
 export class NavModule { }
