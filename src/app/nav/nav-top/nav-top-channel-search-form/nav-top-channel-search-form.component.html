@@ -1,11 +1,9 @@
-<form #channelSearchForm="ngForm" method="post" class="form-inline" (ngSubmit)="onSubmit(channelSearchForm)">
-  <div class="form-group">
-    <input type="text" class="form-control" name="url" id="url"
-           [(ngModel)]="form.url"  placeholder="search for channel..." required>
-
-    <button type="submit" class="btn btn-outline-light mb-2">Search</button>
-  </div>
-    <div class="error" [hidden]="!error">
-      {{error}}
-    </div>
+<form class="ui-g"  #channelSearchForm="ngForm" method="post" (ngSubmit)="onSubmit(channelSearchForm)">
+    <span class="ui-float-label ui-md-2">
+      <input [(ngModel)]="form.url"  name="url" type="text" size="20" pInputText [(ngModel)]="form.password" required>
+      <label for="float-input">search for channel...</label>
+    </span>
+    <span class="ui-md-3">
+        <button type="submit" [disabled]="!channelSearchForm.valid">Search</button>
+    </span>
 </form>

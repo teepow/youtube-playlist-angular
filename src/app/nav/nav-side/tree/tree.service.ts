@@ -49,13 +49,13 @@ export class TreeService {
     var folderTreeNode = {
       "label" : folder.name,
       "data": "folder",
-      "expandedIcon": "pi-plus-circle",
-      "collapsedIcon": "pi-plus-circle",
+      "expandedIcon": "fa fa-folder-open",
+      "collapsedIcon": "fa fa-folder",
       "selectable": false,
       "children" : subscriptions.concat(
           [{"label": "delete folder",
             "data" : {"action": "delete folder", "id": folder.id},
-           "icon": "pi-plus-circle"}])
+           "icon": "fa fa-trash"}])
     };
     return folderTreeNode;
   }
@@ -73,8 +73,8 @@ export class TreeService {
     var subChildren = this.getSubChildren(subscription);
     var subTreeNode = {
       "label" : subscription.title,
-      "expandedIcon": "pi-plus",
-      "collapsedIcon": "pi-plus",
+      "expandedIcon": "fa fa-youtube",
+      "collapsedIcon": "fa fa-youtube",
       "selectable": false,
       "children" : subChildren
     };
@@ -87,21 +87,21 @@ export class TreeService {
       {
         "label" : "play videos",
         "data": {"action": "play", "id": subscription.id},
-        "icon" : "pi-plus-circle"
+        "icon" : "fa fa-youtube-play"
       },
       {
         "label" : "delete subscription",
         "data": { "action": "delete subscription", "id": subscription.id},
-        "icon" : "pi-plus-circle"
+        "icon" : "fa fa-trash"
       },
       {
         "label" : "move to folder",
-        "icon" : "pi-plus-circle",
+        "icon" : "fa fa-suitcase",
         "selectable": false,
         "children" : [{
           "label" : "Default",
           "data": {"action": "move to default", "id": subscription.id},
-          "icon": "pi-plus-circle"
+          "icon": "fa fa-truck"
         }].concat(moveToFolderNodes)
       },
     ]
@@ -126,7 +126,7 @@ export class TreeService {
                   "sub_id": subscription_id,
                   "folder_id": folder.id
               },
-          "icon": "pi-plus-circle"
+          "icon": "fa fa-truck"
       }
       return moveToFolderNode;
   }

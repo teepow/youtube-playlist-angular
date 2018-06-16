@@ -10,7 +10,7 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {AuthInterceptor} from "./http-interceptors/auth-interceptor";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LayoutModule } from '@angular/cdk/layout';
-
+import { AngularFontAwesomeModule } from 'angular-font-awesome';
 
 /*
 * Feature Modules
@@ -35,6 +35,7 @@ import {AuthModule} from "./auth/auth.module";
     NavModule,
     DashboardModule,
     AuthModule,
+    AngularFontAwesomeModule
   ],
   providers: [
 

@@ -27,9 +27,9 @@ export class DashboardVideosComponent implements OnInit {
     this.videos = JSON.parse(localStorage.getItem('videos'));
   }
 
-   addToPlaylist(video_id, thumbanail_url) {
+   addToPlaylist(video_id, thumbanail_url, video_title) {
       this.playListService.addToPlaylist(video_id);
-      this.playListVideoListService.addToVideoList(thumbanail_url);
-      this.playListVideoListService.addToVideoListLocalStorage(thumbanail_url);
+      this.playListVideoListService.addToVideoList(thumbanail_url, video_title);
+      this.playListVideoListService.addToVideoListLocalStorage(thumbanail_url, video_title);
     }
  }

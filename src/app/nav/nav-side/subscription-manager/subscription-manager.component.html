@@ -1,9 +1,7 @@
+<div>
+    <p-tree [value]="treeNodes" selectionMode="single"
+        (onNodeSelect)="nodeSelect($event)">
+    </p-tree>
+    <app-folder-form></app-folder-form>
+</div>
 
-<small id="emailHelp" class="form-text text-muted">create new folder</small>
-<app-folder-form></app-folder-form>
-
-<!-- <h3 class="first">Basic</h3>
-<p-tree [value]="treeNodes"></p-tree> -->
-<h3>Single Selection</h3>
-<p-tree [value]="treeNodes" selectionMode="single"
-    (onNodeSelect)="nodeSelect($event)"></p-tree>

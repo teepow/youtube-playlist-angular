@@ -1,37 +1,22 @@
-<div class="mt-lg-4 col-8">
-  <div class="card">
-    <div class="card-header">Login</div>
-    <div class="card-body">
-
-      <form #loginForm=ngForm (ngSubmit)="onSubmit()">
-        <div class="form-group row">
-          <label for="email" class="col-sm-4 col-form-label">Email</label>
-          <div class="col-sm-8">
-            <input type="email" class="form-control" id="email" name="email" placeholder="Email"
-                   [(ngModel)]="form.email" required>
-          </div>
-        </div>
-        <div class="form-group row">
-          <label for="password" class="col-sm-4 col-form-label">Password</label>
-          <div class="col-sm-8">
-            <input type="password" class="form-control" id="password" name="password" placeholder="Password"
-                   [(ngModel)]="form.password" required>
-          </div>
-            <div class="alert alert-danger mt-2 offset-4" [hidden]="!error">
-              {{error}}
-            </div>
-        </div>
-        <div class="form-group row">
-          <div class="col-sm-8 offset-4">
-            <button type="submit" class="btn btn-primary" [disabled]="!loginForm.valid">Sign in</button>
-            <a class="btn btn-primary float-right" routerLink="/signup">Sign Up</a>
-          </div>
-        </div>
-        <small class="float-right">
-          <a routerLink="/request-password-reset">Reset Password</a>
+ <h1>YouTube Playlist Manager</h1>
+ <form class="ui-g-12 ui-md-6 ui-md-offset-3 ui-g-nopad" #loginForm=ngForm (ngSubmit)="onSubmit()">
+    <p>Sign In</p>
+    <span class="ui-float-label ui-md-offset-4 ui-md-4 ui-g-nopad">
+      <input name="email" type="text" size="30" pInputText [(ngModel)]="form.email" required>
+      <label for="float-input">Email</label>
+    </span>
+    <span class="ui-float-label ui-md-offset-4 ui-md-4 ui-g-nopad">
+      <input name="password" type="password" size="30" pInputText [(ngModel)]="form.password" required>
+      <label for="float-input">Password</label>
+    </span>
+    <span class="ui-float-label ui-g-12 ui-md-offset-4 ui-md-4 ui-g-nopad">
+        <p-button class="ui-md-4 ui-g-nopad" type="submit" label="Sign In" [disabled]="!loginForm.valid"></p-button>
+        <p-button class="ui-md-4 ui-g-nopad ui-md-offset-4" id="sign-up" label="Sign Up" routerLink="/signup"></p-button>
+    </span>
+    <span class="ui-g-12 ui-md-offset-4 ui-md-4 ui-g-nopad" id="reset-pass">
+        <small>
+          <a class="ui-md-4 ui-g-nopad ui-md-offset-8" routerLink="/request-password-reset">forgot password?</a>
         </small>
-      </form>
+    </span>
+</form>
 
-    </div>
-  </div>
-</div>

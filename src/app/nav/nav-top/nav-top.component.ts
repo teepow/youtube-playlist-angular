@@ -25,7 +25,7 @@ export class NavTopComponent implements OnInit {
   logout(event: MouseEvent) {
     event.preventDefault();
     this.authStatus.changeStatus(false);
-    this.router.navigateByUrl("/login");
     this.tokenService.removeToken();
+    this.router.navigateByUrl("/login");
   }
 }

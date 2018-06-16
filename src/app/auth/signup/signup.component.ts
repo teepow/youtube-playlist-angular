@@ -38,7 +38,7 @@ export class SignupComponent implements OnInit {
     localStorage.clear();
     this.tokenService.handleToken(data.access_token);
     this.authStatus.changeStatus(true);
-    this.router.navigateByUrl('/');
+    this.router.navigateByUrl('/welcome');
   }
 
   handleError(error) {

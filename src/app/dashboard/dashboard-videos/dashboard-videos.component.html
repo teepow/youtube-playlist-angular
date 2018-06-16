@@ -1,68 +1,9 @@
-        <div class="ui-g ui-md-12 ui-g-nopad card-container">
-        	<div class="ui-lg-2 ui-md-6 ui-sm-12">
-        		<p-card title="Advanced Card" styleClass="ui-card-shadow">
-        			<p-header>
-        				<img src="Card" src="assets/showcase/images/usercard.png">
-        			</p-header>
-        			<div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed consequuntur error repudiandae numquam deserunt
-        			quisquam repellat libero asperiores earum nam nobis, culpa ratione quam perferendis esse, cupiditate neque quas!</div>
-        			<p-footer>
-        				<button pButton type="button" label="Save" icon="pi pi-check" style="margin-right: .25em"></button>
-        				<button pButton type="button" label="Cancel" icon="pi pi-times" class="ui-button-secondary"></button>
-        			</p-footer>
-        		</p-card>
-        	</div>
-        	<div class="ui-lg-2 ui-md-6  ui-sm-12">
-        		<p-card title="Advanced Card" styleClass="ui-card-shadow">
-        			<p-header>
-        				<img src="Card" src="assets/showcase/images/usercard.png">
-        			</p-header>
-        			<div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed consequuntur error repudiandae numquam deserunt
-        			quisquam repellat libero asperiores earum nam nobis, culpa ratione quam perferendis esse, cupiditate neque quas!</div>
-        			<p-footer>
-        				<button pButton type="button" label="Save" icon="pi pi-check" style="margin-right: .25em"></button>
-        				<button pButton type="button" label="Cancel" icon="pi pi-times" class="ui-button-secondary"></button>
-        			</p-footer>
-        		</p-card>
-        	</div>
-        	<div class="ui-lg-2 ui-md-6  ui-sm-12">
-        		<p-card title="Advanced Card" styleClass="ui-card-shadow">
-        			<p-header>
-        				<img src="Card" src="assets/showcase/images/usercard.png">
-        			</p-header>
-        			<div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed consequuntur error repudiandae numquam deserunt
-        			quisquam repellat libero asperiores earum nam nobis, culpa ratione quam perferendis esse, cupiditate neque quas!</div>
-        			<p-footer>
-        				<button pButton type="button" label="Save" icon="pi pi-check" style="margin-right: .25em"></button>
-        				<button pButton type="button" label="Cancel" icon="pi pi-times" class="ui-button-secondary"></button>
-        			</p-footer>
-        		</p-card>
-        	</div>
-        	<div class="ui-lg-2 ui-md-6 ui-sm-12">
-        		<p-card title="Advanced Card" styleClass="ui-card-shadow">
-        			<p-header>
-        				<img src="Card" src="assets/showcase/images/usercard.png">
-        			</p-header>
-        			<div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed consequuntur error repudiandae numquam deserunt
-        			quisquam repellat libero asperiores earum nam nobis, culpa ratione quam perferendis esse, cupiditate neque quas!</div>
-        			<p-footer>
-        				<button pButton type="button" label="Save" icon="pi pi-check" style="margin-right: .25em"></button>
-        				<button pButton type="button" label="Cancel" icon="pi pi-times" class="ui-button-secondary"></button>
-        			</p-footer>
-        		</p-card>
-        	</div>
-        </div>
-<!-- 			<img class="card-img-top" src="{{ video?.thumbnail }}" alt="Card image cap">
-			<div class="card-body">
-				<div class="d-flex justify-content-between align-items-center">
-					<div class="btn-group">
-						<button type="submit" class="btn btn-sm btn-outline-secondary" (click)="addToPlaylist(video?.id, video?.thumbnail)">Add to playlist</button>
-						<button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-					</div>
-				</div>
-				<br>
-				<h6 class="card-title"><b>{{ video?.id }}</b></h6>
-				<hr>
-				<p class="card-text">{{ video?.description }}</p>
-			</div> -->
-	<!-- 	</div> -->
+<div class="ui-g ui-md-12 ui-g-nopad card-container">
+         <p-card class="ui-lg-4 ui-md-6 ui-sm-12" *ngFor="let video of videos" title="{{video?.title}}" styleClass="ui-card-shadow card">
+                 <p-header>
+                         <img src="Card" src="{{video?.thumbnail}}">
+                 </p-header>
+                         <button (click)="addToPlaylist(video?.id, video?.thumbnail, video?.title)" pButton type="button" label="Save" icon="pi pi-check" style="margin-right: .25em">
+                         </button>
+         </p-card>
+</div>

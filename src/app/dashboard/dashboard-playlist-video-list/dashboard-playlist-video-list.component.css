@@ -1,0 +1,23 @@
+:host ::ng-deep .ui-widget {
+    font-size: .75em;
+}
+:host ::ng-deep .ui-carousel-header {
+    padding: 0px !important;
+}
+
+:host ::ng-deep .ui-carousel-header-title:after {
+   content: '\f16a';
+   font-family: FontAwesome;
+   font-weight: normal;
+   font-style: normal;
+   margin:0px 0px 0px 10px;
+   text-decoration:none;
+}
+
+:host ::ng-deep img {
+    height: 128px;
+}
+
+.title {
+    height: 36px;
+}

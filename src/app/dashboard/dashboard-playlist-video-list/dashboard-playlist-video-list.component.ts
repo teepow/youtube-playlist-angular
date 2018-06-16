@@ -18,6 +18,7 @@ export class DashboardPlaylistVideoListComponent implements OnInit {
   ngOnInit() {
     this.playListVideoListService.videoList.subscribe((videoList) => {
         this.videoList = videoList;
+        console.log(this.videoList);
     });
 
     this.videoList = JSON.parse(localStorage.getItem('thumbnail_urls'));

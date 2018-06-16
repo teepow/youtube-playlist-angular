@@ -1,8 +1,41 @@
-small {
-  margin-left: 12px;
+label {
+    color: #ffffff;
 }
 
-.btn-secondary {
-  margin-top: 5px;
-  float: right;
+form {
+    border: none;
+}
+
+input {
+    margin-left: 9px;
+}
+
+label {
+    margin-left: 12px;
+}
+
+input, input:focus, input:enabled:hover {
+    background-color: #2e6e9e;
+    border: none;
+    border-radius: 0px;
+    border-bottom: 1px solid #ffffff;
+    box-shadow: none;
+    width: 100%;
+    color: #dfeffc;
+}
+
+button {
+    background-color: #2e6e9e;
+    border: none;
+    color: #dfeffc;
+ }
+
+:host ::ng-deep ..ui-state-disabled, .ui-widget:disabled {
+    border-radius: 0px;
+    opacity: 1;
+    background-color: #2e6e9e;
+}
+
+span {
+    color: #dfeffc;
 }

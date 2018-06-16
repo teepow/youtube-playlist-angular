@@ -1,6 +1,12 @@
-<div class="ui-g">
-        <div class="ui-g-2" *ngFor="let video of videoList" >
-            <img src="{{video}}" alt="">
+<p-carousel headerText="playlist" [value]="videoList" [numVisible]=6>
+    <ng-template let-video pTemplate="item">
+        <div class="ui-grid ui-grid-responsive">
+            <div class="ui-grid-row">
+                <div class="ui-grid-col-12">
+                    <img *ngIf="video?.thumbnail" class="ui-grid-col-12" src="{{video?.thumbnail}}">
+                </div>
+            </div>
         </div>
-        <a (click)="startPlaylist()">Play Playlist</a>
-</div>
+    </ng-template>
+
+</p-carousel>
