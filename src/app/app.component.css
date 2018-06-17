@@ -41,14 +41,14 @@ html, body {
 
 .playlist {
     height: 128px;
-    position: absolute;
-    top: 128px;
+    position: fixed;
+    top: 64px;
     background-color: #ffffff;
     z-index: 1;
 }
 .dashboard {
     position: relative;
-    height: 100%;
+    height: auto;
     margin-top: 128px;
     background-color: #ffffff;
 }

@@ -1,9 +1,9 @@
 <div class="ui-g ui-md-12 ui-g-nopad card-container">
-         <p-card class="ui-lg-4 ui-md-6 ui-sm-12" *ngFor="let video of videos" title="{{video?.title}}" styleClass="ui-card-shadow card">
-                 <p-header>
-                         <img src="Card" src="{{video?.thumbnail}}">
-                 </p-header>
-                         <button (click)="addToPlaylist(video?.id, video?.thumbnail, video?.title)" pButton type="button" label="Save" icon="pi pi-check" style="margin-right: .25em">
-                         </button>
-         </p-card>
+   <p-card class="ui-lg-4 ui-md-6 ui-sm-12" *ngFor="let video of videos" title="{{video?.title}}" styleClass="ui-card-shadow card">
+       <p-header>
+           <img src="Card" src="{{video?.thumbnail}}">
+       </p-header>
+       <button (click)="addToPlaylist(video?.id, video?.thumbnail, video?.title)" pButton type="button" label="Save" icon="pi pi-check" style="margin-right: .25em">
+       </button>
+   </p-card>
 </div>

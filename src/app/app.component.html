@@ -1,21 +1,18 @@
 <ng-snotify></ng-snotify>
 <div class="ui-g container">
-    <div *ngIf="!visible" class="ui-g-12 auth">
+    <div *ngIf="!loggedIn" class="ui-g-12 auth">
         <app-auth></app-auth>
     </div>
-    <div  *ngIf="visible" class="ui-g-12 top-nav">
+    <div  *ngIf="loggedIn" class="ui-g-12 ui-g-nopad top-nav">
         <app-nav-top></app-nav-top>
     </div>
-    <div  *ngIf="visible" class="ui-g-12 ui-md-2 ui-g-nopad side-nav">
+    <div  *ngIf="loggedIn" class="ui-g-12 ui-md-2 ui-g-nopad side-nav">
         <app-subscription-manager></app-subscription-manager>
     </div>
-    <div  *ngIf="visible" class="ui-g-12 ui-md-10 ui-g-nopad ui-md-offset-2 header">
-        YouTube Playlist Manager
-    </div>
-    <div  *ngIf="visible" class="ui-g-12 ui-md-10 ui-g-nopad ui-md-offset-2 playlist">
+    <div  *ngIf="loggedIn && showPlaylist" class="ui-g-12 ui-md-10 ui-g-nopad ui-md-offset-2 playlist">
         <app-playlist-video-list></app-playlist-video-list>
     </div>
-    <div  *ngIf="visible" class="ui-g-12 ui-md-10 ui-g-nopad ui-md-offset-2 dashboard ">
+    <div  *ngIf="loggedIn" class="ui-g-12 ui-md-10 ui-g-nopad ui-md-offset-2 dashboard ">
         <app-dashboard></app-dashboard>
     </div>
 </div>

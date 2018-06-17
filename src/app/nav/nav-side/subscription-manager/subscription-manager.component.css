@@ -1,11 +1,47 @@
 :host ::ng-deep .ui-tree {
   background-color: #2e6e9e;
+  border: none;
   color: #dfeffc;
   border-bottom: none;
   height: 100%
+}
+
+form {
+    margin-top: 15px;
 }
 
 div {
     padding-bottom: 64px;
 }
 
+label {
+    color: #ffffff;
+}
+
+input, input:focus, input:enabled:hover {
+    background-color: #2e6e9e;
+    border: none;
+    border-radius: 0px;
+    border-bottom: 1px solid #ffffff;
+    box-shadow: none;
+    width: 100%;
+    color: #dfeffc;
+}
+
+button {
+    background-color: #2e6e9e;
+    border: none;
+    color: #dfeffc;
+    cursor: pointer;
+    padding-left: 15px;
+ }
+
+:host ::ng-deep ..ui-state-disabled, .ui-widget:disabled {
+    border-radius: 0px;
+    opacity: 1;
+    background-color: #2e6e9e;
+}
+
+span {
+    color: #dfeffc;
+}

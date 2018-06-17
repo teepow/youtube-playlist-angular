@@ -5,14 +5,14 @@
     padding: 0px !important;
 }
 
-:host ::ng-deep .ui-carousel-header-title:after {
+/*:host ::ng-deep .ui-carousel-header-title:after {
    content: '\f16a';
    font-family: FontAwesome;
    font-weight: normal;
    font-style: normal;
    margin:0px 0px 0px 10px;
    text-decoration:none;
-}
+}*/
 
 :host ::ng-deep img {
     height: 128px;
@@ -20,4 +20,29 @@
 
 .title {
     height: 36px;
+}
+
+.play {
+  position: relative;
+  background-color: #5c9ccc;
+  height: 32px;
+  color: #ffffff;
+  text-align: center;
+  border-radius: 4px;
+  top: -35px;
+}
+
+span {
+  border: 1px solid #ffffff;
+  border-radius: 5px;
+  padding-top: 2px;
+  padding-bottom: 3px;
+  padding-right: 12px;
+  padding-left: 12px;
+  margin-top: 4px;
+  cursor: pointer;
+}
+
+span:before {
+  padding-right: 4px;
 }

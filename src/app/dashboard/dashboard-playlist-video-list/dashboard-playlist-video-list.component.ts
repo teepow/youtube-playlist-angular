@@ -9,6 +9,8 @@ import {Router} from "@angular/router";
 })
 export class DashboardPlaylistVideoListComponent implements OnInit {
 
+  visible = true;
+
   videoList = [];
 
   constructor(private playListVideoListService : DashboardPlaylistVideoListService,
@@ -18,13 +20,13 @@ export class DashboardPlaylistVideoListComponent implements OnInit {
   ngOnInit() {
     this.playListVideoListService.videoList.subscribe((videoList) => {
         this.videoList = videoList;
-        console.log(this.videoList);
     });
 
-    this.videoList = JSON.parse(localStorage.getItem('thumbnail_urls'));
+    this.videoList = JSON.parse(localStorage.getItem('videoList'));
   }
 
   startPlaylist() {
     this.router.navigateByUrl('/playlist');
   }
+
 }

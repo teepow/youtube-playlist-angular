@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {DashboardChannelService} from "../../../dashboard/dashboard-channel/dashboard-channel.service";
+import {DashboardChannelService} from "../../../../dashboard/dashboard-channel/dashboard-channel.service";
 import {Router} from "@angular/router";
 
 @Component({

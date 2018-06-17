@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthStatusService } from './auth/auth-status.service';
+import {NavTopService} from "./nav/nav-top/nav-top.service";
 
 
 @Component({
@@ -10,13 +11,20 @@ import { AuthStatusService } from './auth/auth-status.service';
 export class AppComponent implements OnInit {
   title = 'app';
 
-  public visible = null;
+  public loggedIn = null;
 
-  constructor(private authStatus : AuthStatusService) { }
+  public showPlaylist = true;
+
+  constructor(private authStatus : AuthStatusService,
+              private navTopService : NavTopService
+    ) { }
 
   ngOnInit() {
     this.authStatus.status.subscribe((status) => {
-       this.visible = status;
+       this.loggedIn = status;
+    });
+    this.navTopService.status.subscribe((status) => {
+       this.showPlaylist = status;
     });
   }
 }

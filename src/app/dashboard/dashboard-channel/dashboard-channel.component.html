@@ -1,12 +1,10 @@
-<div class="album py-5">
-	<div class="container">
-	  <div *ngIf="channel" class="jumbotron jumbotron-fluid">
-	    <div class="container">
-	      <img src="{{ channel?.banner }}" class="img-fluid" alt="">
-	      <h1 class="display-3">{{ channel?.title }}</h1>
-	      <p class="lead">{{ channel?.description }}</p>
-	      <hr class="my-4">
-	        <a class="btn btn-primary btn-lg" (click)="subscribe(channel?.id)">Subscribe</a>
-	    </div>
-	  </div>
-</div>
+	<p-card class="ui-lg-12 ui-md-12 ui-sm-12"  title="" styleClass="ui-card-shadow card">
+		<p-header>
+			<img src="Card" src="{{channel?.banner}}">
+		</p-header>
+		{{channel?.description}}
+		<p-footer>
+			<button (click)="subscribe(channel?.id)" pButton type="button" label="Subscribe" icon="pi pi-check" style="margin-right: .25em">
+			</button>
+		</p-footer>
+	</p-card>

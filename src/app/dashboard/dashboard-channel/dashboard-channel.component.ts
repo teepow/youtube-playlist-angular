@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {DashboardChannelService} from "./dashboard-channel.service";
 import { DashboardChannel } from './dashboard-channel';
 import { SubscriptionManagerSubscriptionService} from '../../nav/nav-side/subscription-manager/subscription-manager-subscriptions/subscription-manager-subscription.service';
+import {TreeService} from "../../nav/nav-side/tree/tree.service";
 
 
 @Component({
@@ -14,7 +15,8 @@ export class DashboardChannelComponent implements OnInit {
   channel : DashboardChannel;
 
   constructor(private channelService: DashboardChannelService,
-              private subscriptionService: SubscriptionManagerSubscriptionService
+              private subscriptionService: SubscriptionManagerSubscriptionService,
+              private treeService : TreeService
    ) { }
 
   ngOnInit() {
@@ -26,6 +28,7 @@ export class DashboardChannelComponent implements OnInit {
 
   subscribe(channel_id) {
     this.subscriptionService.addSubscription(channel_id);
+    this.treeService.setTreeNodes();
   }
 
 }

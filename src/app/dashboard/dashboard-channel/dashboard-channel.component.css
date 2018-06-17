@@ -1,3 +1,12 @@
-.btn {
-	color: white !important;
+.channel-container {
+}
+:host ::ng-deep .ui-card {
+    background-color: #5c9ccc;
+    color: #ffffff;
+}
+
+img {
+    height: 25%;
+    width: 25%;
+    background-color: none;
 }

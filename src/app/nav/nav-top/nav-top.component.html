@@ -1,6 +1,8 @@
 <div class="ui-g">
-  <app-nav-top-channel-search-form class="ui-md-10 ui-g-nopad"></app-nav-top-channel-search-form>
-  <div class="ui-md-2 ui-g-nopad" id="links">
+  <h1 class="ui-md-3 ui-g-nopad">YouTube Playlist Manager</h1>
+<!--   <app-nav-top-channel-search-form class="ui-md-7 ui-g-nopad"></app-nav-top-channel-search-form> -->
+  <div class="ui-md-1 ui-md-offset-8 ui-g-nopad" id="links">
     <a href="#" (click)="logout($event)" *ngIf="loggedIn">Logout</a>
 </div>
+<small id="toggle" (click)="togglePlaylist()">{{showPlaylist ? 'hide' : 'show'}} playlist</small>
 </div>

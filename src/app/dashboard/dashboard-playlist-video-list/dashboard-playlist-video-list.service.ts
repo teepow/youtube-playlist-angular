@@ -13,20 +13,23 @@ export class DashboardPlaylistVideoListService {
   constructor() { }
 
   addToVideoList(thumbnail_url, video_title) {
+      if(localStorage.getItem('videoList')) {
+        this.videoListSource.next(JSON.parse(localStorage.getItem('videoList')));
+      }
         var videoJSON = this.getVideoJSON(thumbnail_url, video_title);
         this.videoListSource.next(this.videoListSource.value.concat(videoJSON));
   }
 
   addToVideoListLocalStorage(thumbnail_url, video_title) {
-      var thumbnail_urls = [];
-      if(localStorage.getItem('thumbnail_urls')) {
-        thumbnail_urls = JSON.parse(localStorage.getItem('thumbnail_urls'));
-        thumbnail_urls.push(thumbnail_url);
+      var videoList = [];
+      if(localStorage.getItem('videoList')) {
+        videoList = JSON.parse(localStorage.getItem('videoList'));
+        var videoJSON = this.getVideoJSON(thumbnail_url, video_title);
+        videoList.push(videoJSON);
       } else {
-       thumbnail_urls[0] = thumbnail_url;
+       videoList[0] = this.getVideoJSON(thumbnail_url, video_title);
       }
-      localStorage.setItem('thumbnail_urls', JSON.stringify(thumbnail_urls));
-      console.log("set");
+      localStorage.setItem('videoList', JSON.stringify(videoList));
   }
 
   private getVideoJSON(thumbnail_url, video_title) {

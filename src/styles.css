@@ -3,11 +3,3 @@
 @import "../node_modules/primeicons/primeicons.css";
 @import "../node_modules/primeng/resources/themes/redmond/theme.css"
 @import "../node_modules/primeng/resources/primeng.min.css";
-
-.ng-invalid:not(form) {
-  border-left: 5px solid red;
-}
-
-.ng-valid:not(form) {
-  border-left: 5px solid green;
-}

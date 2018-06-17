@@ -1,4 +1,4 @@
-<p-carousel headerText="playlist" [value]="videoList" [numVisible]=6>
+<p-carousel headerText="my playlist" [value]="videoList" [numVisible]=6>
     <ng-template let-video pTemplate="item">
         <div class="ui-grid ui-grid-responsive">
             <div class="ui-grid-row">
@@ -10,3 +10,6 @@
     </ng-template>
 
 </p-carousel>
+<div *ngIf="videoList" class="play ui-md-1 ui-g-nopad">
+    <span class="fa fa-play" (click)="startPlaylist()">Play</span>
+</div>

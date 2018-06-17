@@ -9,7 +9,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { NavTopComponent } from './nav-top/nav-top.component';
 import { NavSideComponent } from './nav-side/nav-side.component';
-import { NavTopChannelSearchFormComponent } from './nav-top/nav-top-channel-search-form/nav-top-channel-search-form.component';
+import { NavTopChannelSearchFormComponent } from './nav-side/subscription-manager/nav-top-channel-search-form/nav-top-channel-search-form.component';
 import { SubscriptionManagerComponent } from './nav-side/subscription-manager/subscription-manager.component';
 import { SubscriptionManagerAddFolderFormComponent } from './nav-side/subscription-manager/subscription-manager-add-folder-form/subscription-manager-add-folder-form.component';
 import {AuthModule} from "../auth/auth.module";
