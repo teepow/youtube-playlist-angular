@@ -4,12 +4,14 @@
             <div class="ui-grid-row">
                 <div class="ui-grid-col-12">
                     <img *ngIf="video?.thumbnail" class="ui-grid-col-12" src="{{video?.thumbnail}}">
+                    <span *ngIf="video?.index == 0" class="fa fa-play" (click)="startPlaylist()">Play</span>
+                    <span class="fa fa-close" id="remove" (click)="removeItem(video?.index)">Remove</span>
                 </div>
             </div>
         </div>
     </ng-template>
+                <div>hello</div>
 
 </p-carousel>
 <div *ngIf="videoList" class="play ui-md-1 ui-g-nopad">
-    <span class="fa fa-play" (click)="startPlaylist()">Play</span>
 </div>

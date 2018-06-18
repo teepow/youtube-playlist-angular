@@ -18,6 +18,7 @@ import {InputTextModule} from 'primeng/inputtext';
 import {ButtonModule} from 'primeng/button';
 import {TreeModule} from 'primeng/tree';
 import {TreeNode} from 'primeng/api';
+import { SavePlaylistFormComponent } from './nav-side/subscription-manager/save-playlist-form/save-playlist-form.component';
 
 @NgModule({
   imports: [
@@ -38,7 +39,8 @@ import {TreeNode} from 'primeng/api';
   NavSideComponent,
   NavTopChannelSearchFormComponent,
   SubscriptionManagerComponent,
-  SubscriptionManagerAddFolderFormComponent
+  SubscriptionManagerAddFolderFormComponent,
+  SavePlaylistFormComponent
   ],
 
   exports: [

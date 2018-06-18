@@ -12,30 +12,46 @@ export class DashboardPlaylistVideoListService {
 
   constructor() { }
 
-  addToVideoList(thumbnail_url, video_title) {
-      if(localStorage.getItem('videoList')) {
-        this.videoListSource.next(JSON.parse(localStorage.getItem('videoList')));
+  addToVideoList(thumbnail_url, video_title, video_id) {
+      var videoList = [];
+      if(this.listIsInStorage()) {
+        videoList = this.getListFromStorage();
+        this.videoListSource.next(videoList);
       }
-        var videoJSON = this.getVideoJSON(thumbnail_url, video_title);
+        let videoJSON = this.getVideoJSON(thumbnail_url, video_title, videoList.length, video_id);
         this.videoListSource.next(this.videoListSource.value.concat(videoJSON));
   }
 
-  addToVideoListLocalStorage(thumbnail_url, video_title) {
+  addToVideoListLocalStorage(thumbnail_url, video_title, video_id) {
       var videoList = [];
-      if(localStorage.getItem('videoList')) {
-        videoList = JSON.parse(localStorage.getItem('videoList'));
-        var videoJSON = this.getVideoJSON(thumbnail_url, video_title);
+      if(this.listIsInStorage()) {
+        videoList = this.getListFromStorage();
+        let videoJSON = this.getVideoJSON(thumbnail_url, video_title, videoList.length, video_id);
         videoList.push(videoJSON);
       } else {
-       videoList[0] = this.getVideoJSON(thumbnail_url, video_title);
+       videoList[0] = this.getVideoJSON(thumbnail_url, video_title, videoList.length, video_id);
       }
       localStorage.setItem('videoList', JSON.stringify(videoList));
   }
 
-  private getVideoJSON(thumbnail_url, video_title) {
-    var videoJSON = {
+  private listIsInStorage() {
+    return !!localStorage.getItem('videoList');
+  }
+
+  public getListFromStorage() {
+    return JSON.parse(localStorage.getItem('videoList'));
+  }
+
+  public removeFromObservable(index) {
+    this.videoListSource.next(this.getListFromStorage());
+  }
+
+  private getVideoJSON(thumbnail_url, video_title, index, video_id) {
+    let videoJSON = {
       "thumbnail" : thumbnail_url,
-      "title" : video_title
+      "title" : video_title,
+      "id" : video_id,
+      "index" : index
     }
     return videoJSON;
   }

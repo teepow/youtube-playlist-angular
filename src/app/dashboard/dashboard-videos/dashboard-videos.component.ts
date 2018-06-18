@@ -28,8 +28,7 @@ export class DashboardVideosComponent implements OnInit {
   }
 
    addToPlaylist(video_id, thumbanail_url, video_title) {
-      this.playListService.addToPlaylist(video_id);
-      this.playListVideoListService.addToVideoList(thumbanail_url, video_title);
-      this.playListVideoListService.addToVideoListLocalStorage(thumbanail_url, video_title);
+      this.playListVideoListService.addToVideoList(thumbanail_url, video_title, video_id);
+      this.playListVideoListService.addToVideoListLocalStorage(thumbanail_url, video_title, video_id);
     }
  }

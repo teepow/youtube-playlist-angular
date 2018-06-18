@@ -14,7 +14,7 @@ export class SubscriptionManagerFolderService {
 
   private foldersBaseUrl = 'http://127.0.0.1:8000/folders';
 
-    constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {}
 
   getFolders (): Observable<SubscriptionManagerFolder[]> {
     return this.http.get<SubscriptionManagerFolder[]>(this.foldersBaseUrl);

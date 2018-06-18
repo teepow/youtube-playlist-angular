@@ -7,6 +7,7 @@ import {DashboardVideoService} from "../../../dashboard/dashboard-videos/dashboa
 import {TreeService} from "../tree/tree.service";
 import {SubscriptionManagerFolderService} from "./subscription-manager-folders/subscription-manager-folder.service";
 import {SubscriptionManagerSubscriptionService} from "./subscription-manager-subscriptions/subscription-manager-subscription.service"
+import {SavePlaylistFormService} from "./save-playlist-form/save-playlist-form.service";
 
 @Component({
   selector: 'app-subscription-manager',
@@ -22,7 +23,8 @@ export class SubscriptionManagerComponent implements OnInit {
               private treeService : TreeService,
               private folderService: SubscriptionManagerFolderService,
               private subscriptionService: SubscriptionManagerSubscriptionService,
-              private videoService: DashboardVideoService
+              private videoService: DashboardVideoService,
+              private savePlaylistService: SavePlaylistFormService
   ) { }
 
   ngOnInit() {
@@ -39,19 +41,25 @@ export class SubscriptionManagerComponent implements OnInit {
 
     switch(action) {
         case "delete folder":
-            this.deleteFolder(data.id);
+            this.deleteFolder(data.folder_id);
             break;
         case "delete subscription":
-            this.deleteSubscription(data.id);
+            this.deleteSubscription(data.sub_id);
             break;
         case "move":
             this.moveToFolder(data.sub_id, data.folder_id);
             break;
         case "move to default":
-            this.moveToNoFolder(data.id);
+            this.moveToNoFolder(data.sub_id);
             break
-        case "play":
-             this.showVideos(data.id);
+        case "show videos":
+             this.showVideos(data.sub_id);
+            break;
+        case "play playlist":
+             this.playPlaylist(data.video_ids);
+            break;
+        case "delete playlist":
+             this.deletePlaylist(data.playlist_id);
             break;
         default:
             console.log("not an option");
@@ -81,6 +89,16 @@ export class SubscriptionManagerComponent implements OnInit {
   showVideos(subscription_id) {
     this.videoService.showVideos(subscription_id);
     this.router.navigateByUrl('/videos');
+  }
+
+  playPlaylist(video_ids) {
+      localStorage.setItem('playList', video_ids);
+      this.router.navigateByUrl('/playlist');
+  }
+
+  deletePlaylist(playlist_id) {
+    this.savePlaylistService.deletePlaylist(playlist_id);
+    this.treeService.setTreeNodes();
   }
 
 }
