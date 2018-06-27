@@ -4,12 +4,12 @@
     <span class="ui-float-label ui-md-offset-4 ui-md-4 ui-g-nopad">
       <input name="name" type="text" size="30" pInputText [(ngModel)]="form.name" required>
       <label for="float-input">Name</label>
-    <small  *ngIf="errors"class="error">{{ errors.name }}</small>
+    <small  *ngIf="errors" class="error">{{ errors.name }}</small>
     </span>
     <span class="ui-float-label ui-md-offset-4 ui-md-4 ui-g-nopad">
       <input name="email" type="text" size="30" pInputText [(ngModel)]="form.email" required>
       <label for="float-input">Email</label>
-    <small  *ngIf="errors"class="error">{{ errors.email }}</small>
+    <small  *ngIf="errors" class="error">{{ errors.email }}</small>
     </span>
     <span class="ui-float-label ui-md-offset-4 ui-md-4 ui-g-nopad">
       <input name="password" type="password" size="30" pInputText [(ngModel)]="form.password" required>
@@ -18,7 +18,7 @@
     <span class="ui-float-label ui-md-offset-4 ui-md-4 ui-g-nopad">
       <input name="password_confirmation" type="password" size="30" pInputText [(ngModel)]="form.password_confirmation" required>
       <label for="float-input">Confirm</label>
-    <small  *ngIf="errors"class="error">{{ errors.password }}</small>
+    <small  *ngIf="errors" class="error">{{ errors.password }}</small>
     </span>
     <span class="ui-float-label ui-g-12 ui-md-offset-4 ui-md-4 ui-g-nopad">
         <p-button class="ui-md-4 ui-g-nopad" type="submit" label="Sign Up" [disabled]="!signupForm.valid"></p-button>
