@@ -19,6 +19,7 @@ export class DashboardChannelComponent implements OnInit {
               private treeService : TreeService
    ) { }
 
+  //subscribe to channel observable and get channel from local storage
   ngOnInit() {
     this.channelService.channel.subscribe((channel) => {
        this.channel = channel;
@@ -26,9 +27,13 @@ export class DashboardChannelComponent implements OnInit {
     this.channel = JSON.parse(localStorage.getItem('channel'));
   }
 
+  /**
+   * Add new suscription to db and reload the tree
+   * @param channel_id youtube id for channel being subscribed to
+   */
   subscribe(channel_id) {
-    this.subscriptionService.addSubscription(channel_id);
-    this.treeService.setTreeNodes();
+    this.subscriptionService.addSubscription(channel_id)
+      .subscribe(response => this.treeService.setTreeNodes())
   }
 
 }

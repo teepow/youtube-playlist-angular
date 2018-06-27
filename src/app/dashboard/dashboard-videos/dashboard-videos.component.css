@@ -1,5 +1,5 @@
 .card-container {
-    padding-top: 128px;
+    margin-top: 96px;
 }
 
 .ui-lg-4 {
@@ -15,7 +15,4 @@
 :host ::ng-deep img {
     width: 100%;
     height: 100%;
-}
-
-button {
 }

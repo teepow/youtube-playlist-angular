@@ -12,7 +12,7 @@ import {TreeNode} from 'primeng/api';
 })
 export class SubscriptionManagerFolderService {
 
-  private foldersBaseUrl = 'http://127.0.0.1:8000/folders';
+  private foldersBaseUrl = 'http://youtubeplaylist-laravel.tompowers.website/folders';
 
   constructor(private http: HttpClient) {}
 
@@ -20,14 +20,12 @@ export class SubscriptionManagerFolderService {
     return this.http.get<SubscriptionManagerFolder[]>(this.foldersBaseUrl);
   }
 
-  addFolder(form) {
-    this.http.post(this.foldersBaseUrl, form)
-      .subscribe(response => console.log(response));
+  addFolder(form): Observable<any>  {
+    return this.http.post(this.foldersBaseUrl, form);
   }
 
-  deleteFolder(folder_id) {
-    this.http.delete(this.foldersBaseUrl + '/' + folder_id)
-      .subscribe(response => console.log(response));
+  deleteFolder(folder_id): Observable<any>  {
+    return this.http.delete(this.foldersBaseUrl + '/' + folder_id);
   }
 
 }

@@ -20,8 +20,8 @@ export class SubscriptionManagerAddFolderFormComponent implements OnInit {
   ngOnInit() {
   }
 
-  onSubmit() {
-    this.folderService.addFolder(this.form);
-    this.treeService.setTreeNodes();
+  onSubmit(form) {
+    this.folderService.addFolder(this.form)
+      .subscribe(response => this.treeService.setTreeNodes())
   }
 }

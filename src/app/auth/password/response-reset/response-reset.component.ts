@@ -29,6 +29,9 @@ export class ResponseResetComponent implements OnInit {
     });
   }
 
+  /**
+   * change user's password after they respond to email via AuthService.changePassword()
+   */
   onSubmit() {
     this.AuthService.changePassword(this.form).subscribe(
       data => this.handleResponse(data),
@@ -36,6 +39,10 @@ export class ResponseResetComponent implements OnInit {
     )
   }
 
+  /**
+   * handle response from AuthService.changePassword
+   * @param data response from AuthService.changePassword
+   */
   handleResponse(data) {
     this.Snotify.confirm('Done! Now login with new password', {
       buttons: [
@@ -50,6 +57,10 @@ export class ResponseResetComponent implements OnInit {
     });
   }
 
+  /**
+   * handle any errors from AuthService.changePassword
+   * @param error response from AuthService.changePassword
+   */
   handleError(error) {
     this.errors = error.error.errors;
   }

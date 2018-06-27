@@ -17,16 +17,19 @@ export class SignupComponent implements OnInit {
               private router: Router
               ) { }
 
-  errors = [];
+  errors = null;
 
 
   public form = {
     name:null,
     email:null,
     password:null,
-    password_confirm:null,
+    password_confirmation:null,
   }
 
+  /**
+   * register new user via authenticationService.signup()
+   */
   onSubmit() {
     this.authenticationService.signup(this.form).subscribe(
       data => this.handleResponse(data),
@@ -34,6 +37,10 @@ export class SignupComponent implements OnInit {
     );
   }
 
+  /**
+   * handle response from authenticationService.signup()
+   * @param data response data from authenticationService.signup()
+   */
   handleResponse(data) {
     localStorage.clear();
     this.tokenService.handleToken(data.access_token);
@@ -41,6 +48,10 @@ export class SignupComponent implements OnInit {
     this.router.navigateByUrl('/welcome');
   }
 
+  /**
+   * handle any errors from authenticationService.signup()
+   * @param error response from authenticationService.signup()
+   */
   handleError(error) {
     this.errors = error.error.errors;
   }

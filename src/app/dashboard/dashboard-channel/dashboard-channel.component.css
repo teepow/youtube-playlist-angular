@@ -1,4 +1,5 @@
 .channel-container {
+    margin-top: 96px;
 }
 :host ::ng-deep .ui-card {
     background-color: #5c9ccc;
