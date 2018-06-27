@@ -40,6 +40,7 @@ export class TreeService {
               .subscribe(noFolderSubscriptions => {
                 this.savePlaylistService.getPlaylists()
                   .subscribe(playlists => {
+                    console.log(noFolderSubscriptions);
                   let treeNodes = this.getTreeNodes(folders, noFolderSubscriptions, playlists);
                   this.treeNodesSource.next(treeNodes);
                   });

@@ -10,7 +10,7 @@ export class DashboardVideoService {
 
    videosSource: BehaviorSubject<any> = new BehaviorSubject([]);
 
-  private videosBaseUrl = "http://127.0.0.1:8000/videos";
+  private videosBaseUrl = "http://youtubeplaylist-laravel.tompowers.website/videos";
 
   constructor(private http: HttpClient) { }
 

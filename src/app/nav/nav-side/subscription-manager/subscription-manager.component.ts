@@ -31,7 +31,6 @@ export class SubscriptionManagerComponent implements OnInit {
     this.treeService.treeNodesSource.subscribe((treeNodes) => {
        this.treeNodes = treeNodes;
     });
-
     this.treeService.setTreeNodes();
   }
 
@@ -67,23 +66,23 @@ export class SubscriptionManagerComponent implements OnInit {
   }
 
   deleteFolder(folder_id) {
-    this.folderService.deleteFolder(folder_id);
-    this.treeService.setTreeNodes();
+    this.folderService.deleteFolder(folder_id)
+      .subscribe(response => this.treeService.setTreeNodes())
   }
 
   deleteSubscription(subscription_id) {
-    this.subscriptionService.deleteSubscription(subscription_id);
-    this.treeService.setTreeNodes();
+    this.subscriptionService.deleteSubscription(subscription_id)
+      .subscribe(response => this.treeService.setTreeNodes())
   }
 
   moveToFolder(subscription_id, folder_id) {
-    this.subscriptionService.moveToFolder(subscription_id, folder_id);
-    this.treeService.setTreeNodes();
+    this.subscriptionService.moveToFolder(subscription_id, folder_id)
+      .subscribe(response => this.treeService.setTreeNodes())
   }
 
   moveToNoFolder(subscription_id) {
-    this.subscriptionService.moveToNoFolder(subscription_id);
-    this.treeService.setTreeNodes();
+    this.subscriptionService.moveToNoFolder(subscription_id)
+      .subscribe(response => this.treeService.setTreeNodes())
   }
 
   showVideos(subscription_id) {
@@ -92,13 +91,13 @@ export class SubscriptionManagerComponent implements OnInit {
   }
 
   playPlaylist(video_ids) {
-      localStorage.setItem('playList', video_ids);
+      localStorage.setItem('playlist_video_ids', video_ids);
       this.router.navigateByUrl('/playlist');
   }
 
   deletePlaylist(playlist_id) {
-    this.savePlaylistService.deletePlaylist(playlist_id);
-    this.treeService.setTreeNodes();
+    this.savePlaylistService.deletePlaylist(playlist_id)
+      .subscribe(response => this.treeService.setTreeNodes())
   }
 
 }

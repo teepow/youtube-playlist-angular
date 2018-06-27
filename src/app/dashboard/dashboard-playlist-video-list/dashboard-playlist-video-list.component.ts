@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import {DashboardPlaylistVideoListService} from './dashboard-playlist-video-list.service';
 import {Router} from "@angular/router";
 
-import {DashboardPlaylistService} from "../dashboard-playlist/dashboard-playlist.service";
 
 @Component({
   selector: 'app-playlist-video-list',
@@ -13,55 +12,52 @@ export class DashboardPlaylistVideoListComponent implements OnInit {
 
   visible = true;
 
-  i = 0;
+  playlist = [];
 
-  videoList = [];
-
-  constructor(private playListVideoListService : DashboardPlaylistVideoListService,
-              private router: Router,
-              private playListService : DashboardPlaylistService
+  constructor(private playlistVideoListService : DashboardPlaylistVideoListService,
+              private router: Router
       ) {}
 
+  //subscribe to playlist and retreive playlist from local storage
   ngOnInit() {
-    this.playListVideoListService.videoList.subscribe((videoList) => {
-        this.videoList = videoList;
+    this.playlistVideoListService.playlist.subscribe((playlist) => {
+        this.playlist = playlist;
     });
-
-    this.videoList = JSON.parse(localStorage.getItem('videoList'));
+    this.playlist = JSON.parse(localStorage.getItem('playlist'));
   }
 
   startPlaylist() {
-    let playListString = this.getPlaylistString();
-    localStorage.setItem('playList', playListString);
+    let playlist_video_ids = this.getPlaylistVideoIds();
+    localStorage.setItem('playlist_video_ids', playlist_video_ids);
     this.router.navigateByUrl('/playlist');
   }
 
-  private getPlaylistString() {
-    var playList = "";
-    for(let i = 0; i < this.videoList.length; i++) {
-      playList += (this.videoList[i].id + ",");
+  private getPlaylistVideoIds() {
+    var playlist_video_ids = "";
+    for(let i = 0; i < this.playlist.length; i++) {
+      playlist_video_ids += (this.playlist[i].id + ",");
     }
-    return playList;
+    return playlist_video_ids;
   }
 
   removeItem(index) {
     this.removeFromLocalStorage(index);
     this.reIndexLocalStorageList();
-    this.playListVideoListService.removeFromObservable(index);
+    this.playlistVideoListService.removeFromObservable(index);
   }
 
   removeFromLocalStorage(index) {
-      let videoList = JSON.parse(localStorage.getItem('videoList'));
-      videoList.splice(index, 1);
-      localStorage.setItem('videoList', JSON.stringify(videoList));
+      let playlist = JSON.parse(localStorage.getItem('playlist'));
+      playlist.splice(index, 1);
+      localStorage.setItem('playlist', JSON.stringify(playlist));
   }
 
   private reIndexLocalStorageList() {
-    var videoList = this.playListVideoListService.getListFromStorage();
-    for(let i = 0; i < videoList.length; i++) {
-      videoList[i].index = i;
+    var playlist = this.playlistVideoListService.getPlaylistFromStorage();
+    for(let i = 0; i < playlist.length; i++) {
+      playlist[i].index = i;
     }
-    localStorage.setItem('videoList', JSON.stringify(videoList));
+    localStorage.setItem('playlist', JSON.stringify(playlist));
   }
 
 }

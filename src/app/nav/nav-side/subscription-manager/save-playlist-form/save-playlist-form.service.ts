@@ -8,7 +8,7 @@ import {Playlist} from './playlist';
 })
 export class SavePlaylistFormService {
 
-  private playlistBaseUrl = 'http://127.0.0.1:8000/playlists';
+  private playlistBaseUrl = 'http://youtubeplaylist-laravel.tompowers.website/playlists';
 
   constructor(private http: HttpClient) {}
 
@@ -21,9 +21,7 @@ export class SavePlaylistFormService {
     return this.http.get<Playlist[]>(this.playlistBaseUrl);
   }
 
-  deletePlaylist(playlist_id) {
-    console.log(playlist_id);
-    this.http.delete(this.playlistBaseUrl + '/' + playlist_id)
-      .subscribe(response => console.log(response));
+  deletePlaylist(playlist_id): Observable<any>  {
+    return this.http.delete(this.playlistBaseUrl + '/' + playlist_id);
   }
 }

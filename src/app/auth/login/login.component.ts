@@ -24,6 +24,9 @@ export class LoginComponent implements OnInit {
     password:null,
   }
 
+  /**
+   * Login the user
+   */
   onSubmit() {
     this.authenticationService.login(this.form).subscribe(
       data => this.handleResponse(data),
@@ -31,6 +34,10 @@ export class LoginComponent implements OnInit {
     );
   }
 
+  /**
+   * Handle login response direct user to welcome page
+   * @param data server response containing JWT token
+   */
   handleResponse(data) {
     localStorage.clear();
     this.tokenService.handleToken(data.access_token);
@@ -38,6 +45,10 @@ export class LoginComponent implements OnInit {
     this.router.navigateByUrl('/welcome');
   }
 
+  /**
+   * handles any login errors
+   * @param error server error response
+   */
   handleError(error) {
     this.error = error.error.error;
   }

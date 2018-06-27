@@ -6,25 +6,42 @@ import {HttpClient} from "@angular/common/http";
 })
 export class AuthenticationService {
 
-  private baseUrl = 'http://127.0.0.1:8000/api/auth';  // URL to web api
+  private baseUrl = 'http://youtubeplaylist-laravel.tompowers.website/api/auth';  // URL to web api
 
   constructor(private http: HttpClient) { }
 
-  /** Login to laravel **/
+  /**
+   * Log in the user on server
+   * @param form sign in form
+   * @returns {Observable<Object>}
+   */
   signup(form) {
     return this.http.post(`${this.baseUrl}/signup`, form);
   }
 
-  /** Register on laravel **/
+  /**
+   * Register new user on server
+   * @param form signup form
+   * @returns {Observable<Object>}
+   */
   login(form) {
     return this.http.post(`${this.baseUrl}/login`, form);
   }
 
-  /** Send password reset email with Laravel **/
+  /**
+   * Send a password reset email to user
+   * @param form password reset form
+   * @returns {Observable<Object>}
+   */
   sendPasswordResetLink(form) {
     return this.http.post(`${this.baseUrl}/sendPasswordResetLink`, form);
   }
 
+  /**
+   * Reset the user's password on the server
+   * @param form change password form
+   * @returns {Observable<Object>}
+   */
   changePassword(form) {
     return this.http.post(`${this.baseUrl}/resetPassword`, form);
 }

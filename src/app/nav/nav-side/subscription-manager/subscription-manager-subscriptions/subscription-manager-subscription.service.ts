@@ -8,7 +8,7 @@ import {SubscriptionManagerSubscription} from "./subscription-manager-subscripti
   providedIn: 'root'
 })
 export class SubscriptionManagerSubscriptionService {
-  private subscriptionsBaseUrl = 'http://127.0.0.1:8000/subscriptions';
+  private subscriptionsBaseUrl = 'http://youtubeplaylist-laravel.tompowers.website/subscriptions';
 
   constructor(private http: HttpClient) {}
 
@@ -16,23 +16,19 @@ export class SubscriptionManagerSubscriptionService {
     return this.http.get<SubscriptionManagerSubscription[]>(this.subscriptionsBaseUrl + '/no-folder');
   }
 
-  addSubscription(channel_id) {
-    this.http.post(this.subscriptionsBaseUrl,  {'channel_id' : channel_id})
-      .subscribe(response => console.log(response));
+  addSubscription(channel_id): Observable<any> {
+    return this.http.post(this.subscriptionsBaseUrl,  {'channel_id' : channel_id});
   }
 
-  deleteSubscription(subscription_id){
-    this.http.delete(this.subscriptionsBaseUrl + '/' + subscription_id)
-      .subscribe(response => console.log(response));
+  deleteSubscription(subscription_id): Observable<any> {
+    return this.http.delete(this.subscriptionsBaseUrl + '/' + subscription_id);
   }
 
-  moveToFolder(subscription_id, folder_id) {
-    this.http.get(this.subscriptionsBaseUrl + '/' + subscription_id + '/' + folder_id + '/edit')
-      .subscribe(response => console.log(response));
+  moveToFolder(subscription_id, folder_id): Observable<any>  {
+    return this.http.get(this.subscriptionsBaseUrl + '/' + subscription_id + '/' + folder_id + '/edit');
   }
 
-  moveToNoFolder(subscription_id) {
-    this.http.get(this.subscriptionsBaseUrl + '/' + subscription_id + '/edit')
-      .subscribe(response => console.log(response));
+  moveToNoFolder(subscription_id): Observable<any>  {
+    return this.http.get(this.subscriptionsBaseUrl + '/' + subscription_id + '/edit');
   }
 }

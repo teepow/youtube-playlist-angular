@@ -21,7 +21,7 @@ export class NavTopChannelSearchFormComponent implements OnInit {
   ngOnInit() {
   }
 
-  onSubmit() {
+  onSubmit(form) {
       this.channelService.getChannel(this.form).subscribe(
         response => this.handleResponse(response),
         error => this.handleError(error)

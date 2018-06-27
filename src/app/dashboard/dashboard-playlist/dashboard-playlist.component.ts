@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { DashboardPlaylistService } from './dashboard-playlist.service';
 import { DomSanitizer,SafeResourceUrl  } from '@angular/platform-browser';
 
 
@@ -10,13 +9,14 @@ import { DomSanitizer,SafeResourceUrl  } from '@angular/platform-browser';
 })
 export class DashboardPlaylistComponent implements OnInit {
 
-  public playList : SafeResourceUrl;
+  public playlist_url : SafeResourceUrl;
 
-  constructor(private playListService: DashboardPlaylistService,
-              private sanitizer: DomSanitizer,
-    ) {}
+  constructor(private sanitizer: DomSanitizer) {}
 
+  /**
+   * get playlist video ids from local storage
+    */
   ngOnInit() {
-      this.playList = this.sanitizer.bypassSecurityTrustResourceUrl("https://www.youtube.com/embed/VIDEO_ID?playlist=" + localStorage.getItem('playList'));
+      this.playlist_url = this.sanitizer.bypassSecurityTrustResourceUrl("https://www.youtube.com/embed/VIDEO_ID?playlist=" + localStorage.getItem('playlist_video_ids'));
   }
 }

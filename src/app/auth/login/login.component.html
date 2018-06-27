@@ -8,6 +8,7 @@
     <span class="ui-float-label ui-md-offset-4 ui-md-4 ui-g-nopad">
       <input name="password" type="password" size="30" pInputText [(ngModel)]="form.password" required>
       <label for="float-input">Password</label>
+    <small  class="error">{{ error }}</small>
     </span>
     <span class="ui-float-label ui-g-12 ui-md-offset-4 ui-md-4 ui-g-nopad">
         <p-button class="ui-md-4 ui-g-nopad" type="submit" label="Sign In" [disabled]="!loginForm.valid"></p-button>

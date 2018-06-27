@@ -6,44 +6,40 @@ import {BehaviorSubject, Observable} from "rxjs/index";
 })
 export class DashboardPlaylistVideoListService {
 
-  private videoListSource: BehaviorSubject<any> = new BehaviorSubject([]);
+  private playlistSource: BehaviorSubject<any> = new BehaviorSubject([]);
 
-  videoList = this.videoListSource.asObservable();
+  playlist = this.playlistSource.asObservable();
 
   constructor() { }
 
-  addToVideoList(thumbnail_url, video_title, video_id) {
-      var videoList = [];
-      if(this.listIsInStorage()) {
-        videoList = this.getListFromStorage();
-        this.videoListSource.next(videoList);
-      }
-        let videoJSON = this.getVideoJSON(thumbnail_url, video_title, videoList.length, video_id);
-        this.videoListSource.next(this.videoListSource.value.concat(videoJSON));
+  addToPlaylist(thumbnail_url, video_title, video_id) {
+        let local_storage_playlist = this.getPlaylistFromStorage() || [];
+        let videoJSON = this.getVideoJSON(thumbnail_url, video_title, local_storage_playlist.length, video_id);
+        this.playlistSource.next(local_storage_playlist.concat(videoJSON));
   }
 
-  addToVideoListLocalStorage(thumbnail_url, video_title, video_id) {
-      var videoList = [];
+  addToPlaylistLocalStorage(thumbnail_url, video_title, video_id) {
+      var playlist = [];
       if(this.listIsInStorage()) {
-        videoList = this.getListFromStorage();
-        let videoJSON = this.getVideoJSON(thumbnail_url, video_title, videoList.length, video_id);
-        videoList.push(videoJSON);
+        playlist = this.getPlaylistFromStorage();
+        let videoJSON = this.getVideoJSON(thumbnail_url, video_title, playlist.length, video_id);
+        playlist.push(videoJSON);
       } else {
-       videoList[0] = this.getVideoJSON(thumbnail_url, video_title, videoList.length, video_id);
+       playlist[0] = this.getVideoJSON(thumbnail_url, video_title, playlist.length, video_id);
       }
-      localStorage.setItem('videoList', JSON.stringify(videoList));
+      localStorage.setItem('playlist', JSON.stringify(playlist));
   }
 
   private listIsInStorage() {
-    return !!localStorage.getItem('videoList');
+    return !!localStorage.getItem('playlist');
   }
 
-  public getListFromStorage() {
-    return JSON.parse(localStorage.getItem('videoList'));
+  public getPlaylistFromStorage() {
+    return JSON.parse(localStorage.getItem('playlist'));
   }
 
   public removeFromObservable(index) {
-    this.videoListSource.next(this.getListFromStorage());
+    this.playlistSource.next(this.getPlaylistFromStorage());
   }
 
   private getVideoJSON(thumbnail_url, video_title, index, video_id) {

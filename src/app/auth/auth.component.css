@@ -52,6 +52,10 @@ a {
     white-space: nowrap;
 }
 
+.error {
+    color: red;
+}
+
 #reset-pass {
     margin-top: 10px;
     margin-bottom: 10px;
